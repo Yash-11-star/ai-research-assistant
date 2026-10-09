@@ -25,7 +25,7 @@ router.get('/', async (req, res, next) => {
   } catch (err) {
     if (err instanceof ArxivError) {
       console.error(`Search failed for "${query}": ${err.message}`);
-      return res.status(err.status).json({ error: `Paper search failed: ${err.message}` });
+      return res.status(err.status).json({ error: err.userFacing ? err.message : `Paper search failed: ${err.message}` });
     }
     next(err);
   }

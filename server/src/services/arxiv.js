@@ -4,13 +4,18 @@ const ARXIV_API = 'https://export.arxiv.org/api/query';
 const TIMEOUT_MS = 15000;
 
 // Thrown for anything that goes wrong talking to arXiv. `status` is the HTTP
-// status our API should return (502 bad upstream response, 504 timeout).
+// status our API should return (502 bad upstream response, 503 rate limited,
+// 504 timeout). `userFacing` messages are complete sentences meant to be shown
+// to the user as-is.
 export class ArxivError extends Error {
-  constructor(message, status = 502) {
+  constructor(message, status = 502, { userFacing = false } = {}) {
     super(message);
     this.status = status;
+    this.userFacing = userFacing;
   }
 }
+
+export const RATE_LIMIT_MESSAGE = 'arXiv is temporarily rate-limiting requests. Please wait a few minutes and try again.';
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -92,6 +97,11 @@ export async function searchArxiv(text, maxResults = 10) {
   } catch (err) {
     if (err.name === 'TimeoutError') throw new ArxivError('arXiv did not respond in time', 504);
     throw new ArxivError('Could not reach arXiv');
+  }
+
+  // Rate limited: tell the user to wait (retrying here would only make it worse).
+  if (response.status === 429) {
+    throw new ArxivError(RATE_LIMIT_MESSAGE, 503, { userFacing: true });
   }
 
   const body = await response.text();
