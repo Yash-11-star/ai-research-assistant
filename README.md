@@ -25,7 +25,7 @@ A web application for finding, organizing, and understanding research papers. Us
 ## Project structure
 
 ```
-hw1-research-assistant/
+research-assistant/
 ├── client/                    React + Vite frontend
 │   ├── index.html
 │   ├── vite.config.js         Dev server; proxies /api to the backend
