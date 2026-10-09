@@ -169,4 +169,4 @@ Set in `server/.env`. This file holds your API key and is **not committed** (it 
 
 ## About
 
-Built by Yash Tembhurnikar for Homework 1 of CS 59300ASE at Purdue University: building an end-to-end application with an AI coding agent.
+Built by Yash Tembhurnikar for Homework 1 of CS 59300 – Advanced Software Engineering at Purdue University.
