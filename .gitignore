@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Secrets — never commit API keys
+.env
+.env.*
+!.env.example
+
+# Local database and uploaded PDFs
+server/data/*
+!server/data/.gitkeep
+
+# Build output
+dist/
+
+# Logs / OS
+*.log
+.DS_Store
