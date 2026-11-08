@@ -99,7 +99,7 @@ All files     |   85.65 |    79.42 |
 - `service.pdf.test.js`: the exact 200-letter threshold, password-protected and extraction-failure mapping (unpdf mocked).
 - Exact retry delays (1.5 s / 4 s), per-minute vs per-day 429, model list parsing; exact arXiv rate-limit message; inclusive validation limits.
 - Removed 1 duplicate requirement test, 1 duplicate Q&A test and 3 superseded context tests; fixed the `norm` test.
-- Left alone as low priority or outside the current test scope (not proven equivalent; e.g. prompt wording and stopwords can change real arXiv/Gemini behaviour, which the mocked tests cannot observe): `console.warn` text, `{ recursive: true }` on an existing dir, `DATA_DIR`/`DB_PATH` defaults (always overridden in tests), `fs.writeFile` flag `wx` (random names never collide), unused return values of `setFullText`/`deletePaper`, and the wording of prompt sentences.
+- Left alone as low priority or outside the current test scope (not proven equivalent; e.g. prompt wording and stopwords can change behaviour, and their downstream effects on search results and generated answers are not evaluated by this mocked suite): `console.warn` text, `{ recursive: true }` on an existing dir, `DATA_DIR`/`DB_PATH` defaults (always overridden in tests), `fs.writeFile` flag `wx` (random names never collide), unused return values of `setFullText`/`deletePaper`, and the wording of prompt sentences.
 - One agent mistake fixed during the round: the first PDF-threshold fixtures drew a 200-character line that ran off the page, and pdf.js ignores off-page text. The agent probed the extracted length (92 chars) and wrapped the fixture text.
 
 ---
