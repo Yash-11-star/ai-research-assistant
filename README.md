@@ -196,7 +196,7 @@ The test suites need **no API key and no network**: arXiv and Gemini are replace
 (cd server && npm run coverage)
 (cd client && npm run coverage)
 
-# Mutation testing with Stryker (server: ~3 min; client: ~10 min).
+# Mutation testing with Stryker (about 3–4 minutes each).
 # HTML report in reports/mutation/mutation.html
 (cd server && npm run mutation)
 (cd client && npm run mutation)
