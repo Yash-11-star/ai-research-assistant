@@ -1,0 +1,241 @@
+
+## src/db.js (16 undetected)
+  L9 [no-cov] StringLiteral: "\"\""   | export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../d
+  L9 [survived] ConditionalExpression: "true"   | export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../d
+  L9 [survived] ConditionalExpression: "false"   | export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../d
+  L10 [no-cov] StringLiteral: "\"\""   | const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
+  L10 [survived] ConditionalExpression: "true"   | const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
+  L10 [survived] ConditionalExpression: "false"   | const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
+  L10 [survived] LogicalOperator: "process.env.DB_PATH && path.join(DATA_DIR, 'papers.db')"   | const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
+  L12 [survived] ObjectLiteral: "{}"   | fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+  L12 [survived] BooleanLiteral: "false"   | fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+  L20 [survived] StringLiteral: "``"   | db.exec(`
+  L39 [survived] StringLiteral: "``"   | const PUBLIC_COLUMNS = `
+  L89 [survived] ArrayDeclaration: "[\"Stryker was here\"]"   | authors: JSON.stringify(paper.authors ?? []),
+  L104 [survived] EqualityOperator: "stmts.setFullText.run(fullText, id).changes >= 0"   | return stmts.setFullText.run(fullText, id).changes > 0;
+  L104 [survived] EqualityOperator: "stmts.setFullText.run(fullText, id).changes <= 0"   | return stmts.setFullText.run(fullText, id).changes > 0;
+  L108 [survived] EqualityOperator: "stmts.remove.run(id).changes >= 0"   | return stmts.remove.run(id).changes > 0;
+  L108 [survived] EqualityOperator: "stmts.remove.run(id).changes <= 0"   | return stmts.remove.run(id).changes > 0;
+
+## src/routes/papers.js (15 undetected)
+  L27 [survived] ConditionalExpression: "false"   | if (value === undefined || value === null) return null;
+  L52 [survived] ConditionalExpression: "false"   | if (!body || typeof body !== 'object' || Array.isArray(body)) {
+  L52 [survived] LogicalOperator: "!body && typeof body !== 'object'"   | if (!body || typeof body !== 'object' || Array.isArray(body)) {
+  L52 [survived] ConditionalExpression: "false"   | if (!body || typeof body !== 'object' || Array.isArray(body)) {
+  L89 [survived] StringLiteral: "\"\""   | router.get('/', (req, res) => {
+  L99 [survived] StringLiteral: "\"\""   | router.post('/', (req, res) => {
+  L102 [survived] ConditionalExpression: "true"   | if (paper.external_id) {
+  L115 [survived] ObjectLiteral: "{}"   | if (!internals) return res.status(404).json({ error: 'Paper not found' });
+  L115 [survived] StringLiteral: "\"\""   | if (!internals) return res.status(404).json({ error: 'Paper not found' });
+  L123 [survived] ObjectLiteral: "{}"   | fs.rm(resolved, { force: true }, (err) => {
+  L123 [survived] BooleanLiteral: "false"   | fs.rm(resolved, { force: true }, (err) => {
+  L123 [survived] BlockStatement: "{}"   | fs.rm(resolved, { force: true }, (err) => {
+  L124 [no-cov] StringLiteral: "``"   | if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
+  L124 [survived] ConditionalExpression: "true"   | if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
+  L124 [survived] ConditionalExpression: "false"   | if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
+
+## src/routes/upload.js (12 undetected)
+  L30 [survived] StringLiteral: "\"\""   | LIMIT_FILE_COUNT: [400, 'Upload exactly one PDF file'],
+  L34 [no-cov] ArrayDeclaration: "[]"   | const [status, message] = messages[err.code] ?? [400, err.message];
+  L43 [survived] StringLiteral: "\"\""   | router.post('/', receiveSinglePdf, async (req, res, next) => {
+  L71 [survived] ObjectLiteral: "{}"   | await fs.writeFile(storedPath, file.buffer, { flag: 'wx' });
+  L71 [survived] StringLiteral: "\"\""   | await fs.writeFile(storedPath, file.buffer, { flag: 'wx' });
+  L80 [survived] StringLiteral: "\"\""   | full_text: pages.join('\n\n'),
+  L83 [survived] ConditionalExpression: "true"   | if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`)
+  L83 [survived] ConditionalExpression: "false"   | if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`)
+  L83 [survived] StringLiteral: "``"   | if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`)
+  L83 [survived] StringLiteral: "\"\""   | if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`)
+  L86 [no-cov] ObjectLiteral: "{}"   | if (storedPath) await fs.rm(storedPath, { force: true }).catch(() => {});
+  L86 [no-cov] BooleanLiteral: "false"   | if (storedPath) await fs.rm(storedPath, { force: true }).catch(() => {});
+
+## src/services/arxiv.js (49 undetected)
+  L29 [survived] MethodExpression: "s.replace(/\\s+/g, ' ')"   | const clean = (s) => (typeof s === 'string' ? s.replace(/\s+/g, ' ').trim() : '');
+  L35 [survived] StringLiteral: "\"\""   | 'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+  L35 [survived] StringLiteral: "\"\""   | 'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+  L35 [survived] StringLiteral: "\"\""   | 'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+  L35 [survived] StringLiteral: "\"\""   | 'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+  L35 [survived] StringLiteral: "\"\""   | 'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+  L35 [survived] StringLiteral: "\"\""   | 'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L36 [survived] StringLiteral: "\"\""   | 'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L37 [survived] StringLiteral: "\"\""   | 'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+  L48 [survived] Regex: "/\\s/"   | .split(/\s+/)
+  L66 [survived] MethodExpression: "clean(entry.published)"   | const year = Number.parseInt(clean(entry.published).slice(0, 4), 10);
+  L67 [no-cov] ArrayDeclaration: "[\"Stryker was here\"]"   | const hasPdf = (entry.link ?? []).some((l) => l.title === 'pdf' || l.type === 'application
+  L73 [survived] ArrayDeclaration: "[\"Stryker was here\"]"   | authors: (entry.author ?? []).map((a) => clean(a?.name)).filter(Boolean),
+  L73 [survived] OptionalChaining: "a.name"   | authors: (entry.author ?? []).map((a) => clean(a?.name)).filter(Boolean),
+  L89 [survived] StringLiteral: "\"\""   | start: '0',
+  L91 [survived] StringLiteral: "\"\""   | sortBy: 'relevance',
+  L111 [survived] OptionalChaining: "parser.parse(body).feed"   | feed = parser.parse(body)?.feed;
+  L112 [no-cov] BlockStatement: "{}"   | } catch {
+  L117 [survived] OptionalChaining: "feed?.entry.find"   | const errorEntry = feed?.entry?.find((e) => clean(e?.id).includes('/api/errors'));
+  L117 [survived] OptionalChaining: "e.id"   | const errorEntry = feed?.entry?.find((e) => clean(e?.id).includes('/api/errors'));
+  L124 [survived] LogicalOperator: "!feed && typeof feed !== 'object'"   | if (!feed || typeof feed !== 'object') {
+  L124 [survived] ConditionalExpression: "false"   | if (!feed || typeof feed !== 'object') {
+  L128 [survived] ArrayDeclaration: "[\"Stryker was here\"]"   | const entries = feed.entry ?? [];
+  L130 [survived] ConditionalExpression: "true"   | if (results.length < entries.length) {
+  L130 [survived] BlockStatement: "{}"   | if (results.length < entries.length) {
+  L130 [survived] EqualityOperator: "results.length <= entries.length"   | if (results.length < entries.length) {
+  L130 [survived] ConditionalExpression: "false"   | if (results.length < entries.length) {
+  L130 [survived] EqualityOperator: "results.length >= entries.length"   | if (results.length < entries.length) {
+  L131 [survived] StringLiteral: "``"   | console.warn(`arXiv: skipped ${entries.length - results.length} malformed entries`);
+  L131 [survived] ArithmeticOperator: "entries.length + results.length"   | console.warn(`arXiv: skipped ${entries.length - results.length} malformed entries`);
+
+## src/services/context.js (12 undetected)
+  L28 [survived] ConditionalExpression: "true"   | if (end < text.length) {
+  L28 [survived] ConditionalExpression: "false"   | if (end < text.length) {
+  L28 [survived] EqualityOperator: "end <= text.length"   | if (end < text.length) {
+  L28 [survived] EqualityOperator: "end >= text.length"   | if (end < text.length) {
+  L28 [survived] BlockStatement: "{}"   | if (end < text.length) {
+  L30 [survived] ConditionalExpression: "false"   | if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
+  L30 [survived] EqualityOperator: "nl >= start + CHUNK_CHARS / 2"   | if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
+  L30 [survived] ArithmeticOperator: "CHUNK_CHARS * 2"   | if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
+  L38 [no-cov] ArrayDeclaration: "[\"Stryker was here\"]"   | const keywords = (s) => new Set(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)?.filter((w) =>
+  L38 [survived] OptionalChaining: "s.toLowerCase().match(/[\\p{L}\\p{N}]{3,}/gu).filter"   | const keywords = (s) => new Set(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)?.filter((w) =>
+  L56 [survived] MethodExpression: "[...keywords(chunks[i])]"   | const score = (i) => [...keywords(chunks[i])].filter((w) => q.has(w)).length;
+  L57 [survived] ArithmeticOperator: "a[0] + b[0]"   | picks = middle.map((i) => [i, score(i)]).sort((a, b) => b[1] - a[1] || a[0] - b[0]).slice(
+
+## src/services/gemini.js (33 undetected)
+  L3 [survived] StringLiteral: "\"\""   | const DEFAULT_FALLBACK_MODELS = 'gemini-3.8-flash,gemini-3.5-flash-lite';
+  L23 [no-cov] ArrayDeclaration: "[\"Stryker was here\"]"   | return (data?.error?.details ?? []).some((d) =>
+  L23 [survived] OptionalChaining: "data?.error.details"   | return (data?.error?.details ?? []).some((d) =>
+  L23 [survived] OptionalChaining: "data.error"   | return (data?.error?.details ?? []).some((d) =>
+  L24 [survived] OptionalChaining: "d?.violations.some"   | d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
+  L24 [survived] OptionalChaining: "d.violations"   | d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
+  L24 [survived] OptionalChaining: "v.quotaId"   | d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
+  L24 [survived] StringLiteral: "\"Stryker was here!\""   | d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
+  L29 [survived] BlockStatement: "{}"   | function quotaIds(data) {
+  L30 [no-cov] ArrayDeclaration: "[\"Stryker was here\"]"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] MethodExpression: "(data?.error?.details ?? []).flatMap(d => d?.violations ?? []).map(v    | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] OptionalChaining: "data?.error.details"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] ArrayDeclaration: "[\"Stryker was here\"]"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] LogicalOperator: "d?.violations && []"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] ArrowFunction: "() => undefined"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] OptionalChaining: "d.violations"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] ArrowFunction: "() => undefined"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L30 [survived] OptionalChaining: "v.quotaId"   | const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?
+  L31 [survived] StringLiteral: "\"Stryker was here!\""   | return ids.length ? ` [${ids.join(', ')}]` : '';
+  L31 [survived] StringLiteral: "``"   | return ids.length ? ` [${ids.join(', ')}]` : '';
+  L31 [survived] StringLiteral: "\"\""   | return ids.length ? ` [${ids.join(', ')}]` : '';
+  L55 [survived] StringLiteral: "\"\""   | const body = JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], gen
+  L65 [survived] StringLiteral: "\"\""   | method: 'POST',
+  L66 [survived] StringLiteral: "\"\""   | headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+  L74 [survived] ArrowFunction: "() => undefined"   | data = await response.json().catch(() => null);
+  L77 [survived] ConditionalExpression: "true"   | dailyQuota = response.status === 429 && isDailyQuotaError(data);
+  L80 [survived] StringLiteral: "\"\""   | console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up
+  L80 [survived] StringLiteral: "``"   | console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up
+  L80 [survived] StringLiteral: "\"Stryker was here!\""   | console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up
+  L83 [survived] StringLiteral: "``"   | console.warn(`Gemini ${model} HTTP ${response.status}${quotas}; retrying`);
+  L98 [survived] OptionalChaining: "data.candidates"   | const candidate = data?.candidates?.[0];
+  L99 [survived] OptionalChaining: "candidate?.content?.parts.map"   | const text = candidate?.content?.parts?.map((p) => p.text ?? '').join('');
+  L101 [survived] OptionalChaining: "data.promptFeedback"   | const reason = candidate?.finishReason ?? data?.promptFeedback?.blockReason ?? 'empty resp
+
+## src/services/metadata.js (35 undetected)
+  L7 [survived] ObjectLiteral: "{}"   | const SCHEMA = {
+  L8 [survived] StringLiteral: "\"\""   | type: 'object',
+  L9 [survived] ObjectLiteral: "{}"   | properties: {
+  L10 [survived] ObjectLiteral: "{}"   | title: { type: 'string', nullable: true },
+  L10 [survived] BooleanLiteral: "false"   | title: { type: 'string', nullable: true },
+  L10 [survived] StringLiteral: "\"\""   | title: { type: 'string', nullable: true },
+  L11 [survived] ObjectLiteral: "{}"   | authors: { type: 'array', items: { type: 'string' } },
+  L11 [survived] StringLiteral: "\"\""   | authors: { type: 'array', items: { type: 'string' } },
+  L11 [survived] ObjectLiteral: "{}"   | authors: { type: 'array', items: { type: 'string' } },
+  L12 [survived] ObjectLiteral: "{}"   | year: { type: 'integer', nullable: true },
+  L12 [survived] StringLiteral: "\"\""   | year: { type: 'integer', nullable: true },
+  L12 [survived] BooleanLiteral: "false"   | year: { type: 'integer', nullable: true },
+  L13 [survived] ObjectLiteral: "{}"   | year_evidence: { type: 'string', nullable: true },
+  L13 [survived] StringLiteral: "\"\""   | year_evidence: { type: 'string', nullable: true },
+  L13 [survived] BooleanLiteral: "false"   | year_evidence: { type: 'string', nullable: true },
+  L14 [survived] ObjectLiteral: "{}"   | abstract: { type: 'string', nullable: true },
+  L14 [survived] StringLiteral: "\"\""   | abstract: { type: 'string', nullable: true },
+  L14 [survived] BooleanLiteral: "false"   | abstract: { type: 'string', nullable: true },
+  L16 [survived] ArrayDeclaration: "[]"   | required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+  L16 [survived] StringLiteral: "\"\""   | required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+  L16 [survived] StringLiteral: "\"\""   | required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+  L16 [survived] StringLiteral: "\"\""   | required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+  L16 [survived] StringLiteral: "\"\""   | required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+  L16 [survived] StringLiteral: "\"\""   | required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+  L19 [survived] StringLiteral: "``"   | const PROMPT = `You extract bibliographic metadata from the text of the first pages of a r
+  L39 [survived] StringLiteral: "\"\""   | const sourceText = pages.slice(0, 2).join('\n\n').slice(0, MAX_PROMPT_CHARS);
+  L43 [survived] ConditionalExpression: "true"   | const found = (s) => norm(s).length > 0 && source.includes(norm(s));
+  L43 [survived] EqualityOperator: "norm(s).length >= 0"   | const found = (s) => norm(s).length > 0 && source.includes(norm(s));
+  L53 [no-cov] ArrayDeclaration: "[\"Stryker was here\"]"   | for (const name of Array.isArray(raw.authors) ? raw.authors : []) {
+  L55 [survived] ConditionalExpression: "false"   | if (!a) continue;
+  L70 [survived] ConditionalExpression: "true"   | if (abstract) {
+  L72 [survived] ConditionalExpression: "true"   | const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) 
+  L72 [survived] LogicalOperator: "a.length > 200 || source.includes(a.slice(0, 80))"   | const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) 
+  L72 [survived] ConditionalExpression: "true"   | const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) 
+  L72 [survived] EqualityOperator: "a.length >= 200"   | const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) 
+
+## src/app.js (3 undetected)
+  L12 [survived] StringLiteral: "\"\""   | app.use(express.json({ limit: '1mb' }));
+  L12 [survived] ObjectLiteral: "{}"   | app.use(express.json({ limit: '1mb' }));
+  L23 [survived] StringLiteral: "\"\""   | app.use('/api', (req, res) => {
+
+## src/routes/ai.js (5 undetected)
+  L27 [survived] OptionalChaining: "req.body.question"   | const question = req.body?.question;
+  L28 [survived] ConditionalExpression: "false"   | if (question === undefined || question === null) throw new ValidationError('question is re
+  L32 [survived] EqualityOperator: "q.length >= MAX_QUESTION_LENGTH"   | if (q.length > MAX_QUESTION_LENGTH) throw new ValidationError(`question must be at most ${
+  L46 [survived] ConditionalExpression: "true"   | if (err instanceof GeminiError) {
+  L47 [survived] StringLiteral: "``"   | console.error(`Gemini error on ${req.method} ${req.originalUrl}: ${err.message}`);
+
+## src/routes/search.js (4 undetected)
+  L10 [survived] StringLiteral: "\"\""   | router.get('/', async (req, res, next) => {
+  L18 [survived] EqualityOperator: "query.length >= MAX_QUERY_LENGTH"   | if (query.length > MAX_QUERY_LENGTH) {
+  L26 [survived] ConditionalExpression: "true"   | if (err instanceof ArxivError) {
+  L27 [survived] StringLiteral: "``"   | console.error(`Search failed for "${query}": ${err.message}`);
+
+## src/services/content.js (10 undetected)
+  L17 [survived] StringLiteral: "\"\""   | const ALLOWED_PDF_HOSTS = new Set(['arxiv.org', 'www.arxiv.org', 'export.arxiv.org']);
+  L32 [survived] ObjectLiteral: "{}"   | response = await fetch(url, { signal: AbortSignal.timeout(DOWNLOAD_TIMEOUT_MS) });
+  L45 [survived] EqualityOperator: "Number(response.headers.get('content-length')) >= MAX_PDF_BYTES"   | if (Number(response.headers.get('content-length')) > MAX_PDF_BYTES) {
+  L54 [survived] EqualityOperator: "size >= MAX_PDF_BYTES"   | if (size > MAX_PDF_BYTES) throw new ContentError('Paper PDF is too large to process', 422)
+  L73 [survived] MethodExpression: "stored"   | if (stored && stored.trim()) return { paper, text: stored, contentSource: 'stored' };
+  L75 [survived] BlockStatement: "{}"   | if (!paper.pdf_url) {
+  L75 [survived] ConditionalExpression: "false"   | if (!paper.pdf_url) {
+  L76 [survived] StringLiteral: "\"\""   | throw new ContentError('This paper has no full text or PDF link, so it cannot be summarize
+  L81 [survived] StringLiteral: "\"\""   | const text = pages.join('\n\n');
+  L83 [survived] StringLiteral: "``"   | console.log(`Paper #${id}: downloaded ${paper.pdf_url} (${buffer.length} bytes), stored ${
+
+## src/services/llm.js (15 undetected)
+  L31 [survived] StringLiteral: "\"\""   | type: 'object',
+  L32 [survived] ArrowFunction: "() => undefined"   | properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
+  L32 [survived] ArrayDeclaration: "[]"   | properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
+  L32 [survived] ObjectLiteral: "{}"   | properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
+  L32 [survived] StringLiteral: "\"\""   | properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
+  L56 [survived] OptionalChaining: "raw[f]"   | const summary = Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, clean(raw?.[f]) || NOT_ST
+  L87 [survived] OptionalChaining: "raw.found_in_paper"   | const found = raw?.found_in_paper === true;
+  L88 [survived] OptionalChaining: "raw.answer"   | let answer = clean(raw?.answer);
+  L90 [survived] ConditionalExpression: "false"   | if (!answer) answer = NOT_ENOUGH_INFO;
+  L94 [survived] ArrayDeclaration: "[\"Stryker was here\"]"   | const quotes = (Array.isArray(raw?.evidence) ? raw.evidence : []).map(clean).filter(Boolea
+  L94 [survived] OptionalChaining: "raw.evidence"   | const quotes = (Array.isArray(raw?.evidence) ? raw.evidence : []).map(clean).filter(Boolea
+  L96 [survived] ArithmeticOperator: "quotes.length + evidence.length"   | const dropped = found ? quotes.length - evidence.length : 0;
+  L102 [survived] StringLiteral: "``"   | if (dropped) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) no
+  L102 [survived] ConditionalExpression: "true"   | if (dropped) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) no
+  L102 [survived] ConditionalExpression: "false"   | if (dropped) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) no
+
+## src/services/pdf.js (6 undetected)
+  L25 [survived] OptionalChaining: "err.name"   | if (err?.name === 'PasswordException') throw new PdfError('PDF is password-protected');
+  L30 [survived] ObjectLiteral: "{}"   | const { totalPages, text } = await extractText(pdf, { mergePages: false });
+  L31 [survived] MethodExpression: "t"   | const pages = text.map((t) => t.trim());
+  L32 [survived] StringLiteral: "\"Stryker was here!\""   | const letters = pages.join('').replace(/\s/g, '').length;
+  L40 [survived] BlockStatement: "{}"   | } finally {
+  L42 [survived] OptionalChaining: "pdf.loadingTask.destroy"   | await pdf.loadingTask?.destroy().catch(() => {});

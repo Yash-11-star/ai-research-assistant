@@ -1,0 +1,2166 @@
+22:07:40 (40809) INFO ProjectReader Found 14 of 46 file(s) to be mutated.
+22:07:40 (40809) INFO Instrumenter Instrumented 14 source file(s) with 1219 mutant(s)
+22:07:40 (40809) INFO ConcurrencyTokenProvider Creating 4 test runner process(es).
+22:07:40 (40809) INFO BroadcastReporter Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+22:07:40 (40809) INFO DryRunExecutor Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+22:07:44 (40809) INFO DryRunExecutor Initial test run succeeded. Ran 210 tests in 3 seconds (net 940.0495899999994 ms, overhead 2369.9504100000004 ms).
+22:07:44 (40809) WARN MutantTestPlanner Detected 252 static mutants (21% of total) that are estimated to take 74% of the time running the tests!
+  You might want to enable "ignoreStatic" to ignore these static mutants for your next run. 
+  For more information about static mutants visit: https://stryker-mutator.io/docs/mutation-testing-elements/static-mutants
+  (disable "warnings.slow" to ignore this warning)
+Mutation testing 0% (elapsed: <1m, remaining: ~21m) 50/1219 tested (4 survived, 0 timed out)
+Mutation testing 1% (elapsed: <1m, remaining: ~23m) 98/1219 tested (9 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~9m) 239/1219 tested (13 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~10m) 283/1219 tested (21 survived, 0 timed out)
+Mutation testing 6% (elapsed: <1m, remaining: ~12m) 311/1219 tested (24 survived, 0 timed out)
+Mutation testing 7% (elapsed: ~1m, remaining: ~13m) 334/1219 tested (25 survived, 0 timed out)
+Mutation testing 9% (elapsed: ~1m, remaining: ~11m) 400/1219 tested (32 survived, 0 timed out)
+Mutation testing 10% (elapsed: ~1m, remaining: ~11m) 536/1219 tested (52 survived, 0 timed out)
+Mutation testing 12% (elapsed: ~1m, remaining: ~10m) 641/1219 tested (66 survived, 0 timed out)
+Mutation testing 14% (elapsed: ~1m, remaining: ~9m) 683/1219 tested (82 survived, 0 timed out)
+Mutation testing 17% (elapsed: ~1m, remaining: ~8m) 733/1219 tested (91 survived, 1 timed out)
+Mutation testing 19% (elapsed: ~2m, remaining: ~8m) 815/1219 tested (98 survived, 1 timed out)
+Mutation testing 23% (elapsed: ~2m, remaining: ~7m) 922/1219 tested (113 survived, 1 timed out)
+Mutation testing 27% (elapsed: ~2m, remaining: ~6m) 973/1219 tested (121 survived, 1 timed out)
+Mutation testing 39% (elapsed: ~2m, remaining: ~3m) 1012/1219 tested (131 survived, 1 timed out)
+Mutation testing 45% (elapsed: ~2m, remaining: ~3m) 1034/1219 tested (136 survived, 1 timed out)
+Mutation testing 49% (elapsed: ~2m, remaining: ~2m) 1046/1219 tested (143 survived, 1 timed out)
+Mutation testing 52% (elapsed: ~3m, remaining: ~2m) 1056/1219 tested (153 survived, 1 timed out)
+Mutation testing 56% (elapsed: ~3m, remaining: ~2m) 1071/1219 tested (163 survived, 1 timed out)
+Mutation testing 59% (elapsed: ~3m, remaining: ~2m) 1080/1219 tested (165 survived, 1 timed out)
+Mutation testing 60% (elapsed: ~3m, remaining: ~2m) 1083/1219 tested (168 survived, 1 timed out)
+Mutation testing 62% (elapsed: ~3m, remaining: ~2m) 1091/1219 tested (170 survived, 6 timed out)
+Mutation testing 74% (elapsed: ~3m, remaining: ~1m) 1131/1219 tested (172 survived, 7 timed out)
+Mutation testing 84% (elapsed: ~4m, remaining: <1m) 1165/1219 tested (173 survived, 9 timed out)
+Mutation testing 91% (elapsed: ~4m, remaining: <1m) 1191/1219 tested (178 survived, 9 timed out)
+Mutation testing 95% (elapsed: ~4m, remaining: <1m) 1202/1219 tested (188 survived, 9 timed out)
+Mutation testing 98% (elapsed: ~4m, remaining: <1m) 1213/1219 tested (199 survived, 9 timed out)
+
+All tests
+  api.ai.test.js
+    ✓ POST /api/papers/:id/summary returns a structured summary generated from stored text (killed 27)
+    ~ POST /api/papers/:id/summary fills missing summary fields with "Not stated in the paper." (covered 133)
+    ✓ POST /api/papers/:id/summary returns 404 for an unknown paper (killed 5)
+    ~ POST /api/papers/:id/summary returns 422 for a paper with no text and no PDF link (covered 45)
+    ✓ POST /api/papers/:id/questions answers with evidence quotes that are verified against the paper (killed 14)
+    ✓ POST /api/papers/:id/questions warns when no evidence quote can be verified (killed 3)
+    ✓ POST /api/papers/:id/questions rejects {} with 400 (killed 7)
+    ✓ POST /api/papers/:id/questions rejects {"question":42} with 400 (killed 2)
+    ✓ POST /api/papers/:id/questions rejects {"question":"   "} with 400 (killed 2)
+    ✓ POST /api/papers/:id/questions rejects {"question":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} with 400 (killed 2)
+    ✓ POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503 (killed 18)
+    ✓ POST /api/papers/:id/questions maps a non-temporary Gemini error on summary to 502 (killed 2)
+    ✓ POST /api/papers/:id/questions rejects an invalid paper id before calling Gemini (killed 2)
+  api.internal-error.test.js
+    ✓ unexpected errors return a generic 500 that does not leak internals (killed 4)
+  api.papers.test.js
+    ✓ health and routing GET /api/health reports ok and whether the Gemini key is loaded (killed 3)
+    ✓ health and routing unknown API routes return a JSON 404 (killed 3)
+    ✓ health and routing malformed JSON bodies return 400 (killed 7)
+    ✓ health and routing JSON bodies over 1 MB return 413 (killed 7)
+    ✓ paper library CRUD saves a paper and returns it with server-managed fields (killed 69)
+    ✓ paper library CRUD trims strings, drops blank authors and stores empty optional fields as null (killed 11)
+    ~ paper library CRUD never accepts server-managed fields from the client (covered 129)
+    ✓ paper library CRUD lists newest first and fetches one paper by id (killed 9)
+    ✓ paper library CRUD rejects a duplicate save (same arXiv id) with 409 and returns the existing paper (killed 7)
+    ✓ paper library CRUD allows several papers without an external id (killed 6)
+    ✓ paper library CRUD deletes a paper (204) and then reports 404 (killed 12)
+    ✓ paper library CRUD deleting an uploaded paper also deletes its PDF file (killed 7)
+    ✓ paper library CRUD never deletes files outside the data directory (killed 2)
+    ✓ paper validation rejects [] with 400 (killed 7)
+    ✓ paper validation rejects {} with 400 (killed 2)
+    ~ paper validation rejects {"title":"   "} with 400 (covered 40)
+    ✓ paper validation rejects {"title":42} with 400 (killed 3)
+    ✓ paper validation rejects {"title":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} with 400 (killed 2)
+    ✓ paper validation rejects {"title":"x","authors":"Bob"} with 400 (killed 4)
+    ✓ paper validation rejects {"title":"x","authors":["Bob",7]} with 400 (killed 3)
+    ✓ paper validation rejects {"title":"x","authors":["A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"]} with 400 (killed 2)
+    ✓ paper validation rejects {"title":"x","year":"nineteen"} with 400 (killed 6)
+    ✓ paper validation rejects {"title":"x","year":999} with 400 (killed 1)
+    ~ paper validation rejects {"title":"x","year":2017.5} with 400 (covered 67)
+    ✓ paper validation rejects {"title":"x","year":2028} with 400 (killed 1)
+    ✓ paper validation rejects {"title":"x","url":"not a url"} with 400 (killed 3)
+    ✓ paper validation rejects {"title":"x","url":"javascript:alert(1)"} with 400 (killed 4)
+    ✓ paper validation rejects {"title":"x","pdf_url":"ftp://example.com/a.pdf"} with 400 (killed 1)
+    ✓ paper validation rejects {"title":"x","abstract":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"} with 400 (killed 1)
+    ✓ paper validation rejects {"title":"x","external_id":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"} with 400 (killed 2)
+    ✓ paper validation accepts values exactly at the limits (killed 4)
+    ✓ paper validation treats null authors and year as empty (killed 3)
+    ✓ paper validation accepts year 1000 (killed 1)
+    ✓ paper validation accepts year 2027 (killed 2)
+    ~ paper validation accepts year "2017" (covered 95)
+    ✓ paper validation rejects id abc with 400 (killed 3)
+    ✓ paper validation rejects id 0 with 400 (killed 1)
+    ~ paper validation rejects id -1 with 400 (covered 18)
+    ~ paper validation rejects id 1.5 with 400 (covered 18)
+    ✓ paper validation rejects id 1e3 with 400 (killed 3)
+    ~ paper validation rejects id 99999999999999999999 with 400 (covered 19)
+    ✓ paper validation returns 404 for a missing paper (killed 3)
+  api.search.test.js
+    ✓ GET /api/search returns normalized arXiv results (killed 69)
+    ✓ GET /api/search sends an AND query without stopwords to arXiv (killed 8)
+    ✓ GET /api/search rejects {} with 400 (killed 3)
+    ✓ GET /api/search rejects {"q":"   "} with 400 (killed 4)
+    ✓ GET /api/search rejects {"q":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} with 400 (killed 4)
+    ✓ GET /api/search maps an arXiv 429 to a 503 with a user-facing message (killed 10)
+    ✓ GET /api/search passes a timeout signal to fetch (killed 1)
+    ✓ GET /api/search detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions (killed 15)
+    ✓ GET /api/search says "unknown error" when arXiv rejects a query without explaining (killed 10)
+    ✓ GET /api/search reports the total number of matches, not just the page size (killed 2)
+    ~ GET /api/search handles old-style arXiv ids, missing PDF links and missing dates (covered 124)
+    ✓ GET /api/search skips malformed entries without failing the search (killed 3)
+    ✓ GET /api/search returns no results without calling arXiv when only stopwords are given (killed 6)
+    ✓ GET /api/search rejects a repeated q parameter (killed 3)
+    ~ GET /api/search reports a query arXiv rejects (covered 84)
+    ✓ GET /api/search maps bad upstream responses to 502 (0) (killed 4)
+    ✓ GET /api/search maps bad upstream responses to 502 (1) (killed 3)
+    ✓ GET /api/search maps an arXiv timeout to 504 (killed 5)
+    ✓ GET /api/search maps a network failure to 502 (killed 2)
+  api.upload.test.js
+    ✓ POST /api/papers/upload stores an uploaded PDF with verified metadata and full text (killed 47)
+    ✓ POST /api/papers/upload discards hallucinated metadata that is not in the PDF (killed 13)
+    ✓ POST /api/papers/upload rejects requests without a file (killed 4)
+    ✓ POST /api/papers/upload rejects non-PDF files with 415 (killed 4)
+    ✓ POST /api/papers/upload rejects a file named .pdf whose bytes are not a PDF (killed 1)
+    ✓ POST /api/papers/upload rejects files over 20 MB with 413 (killed 10)
+    ✓ POST /api/papers/upload rejects a file sent in the wrong form field (killed 2)
+    ✓ POST /api/papers/upload rejects more than one file (killed 1)
+    ✓ POST /api/papers/upload rejects extra form fields (killed 2)
+    ✓ POST /api/papers/upload rejects a multipart body without a boundary (killed 4)
+    ✓ POST /api/papers/upload [BUG-1] rejects a truncated multipart body with 400, not 500 (killed 1)
+    ✓ POST /api/papers/upload rejects a corrupted PDF with 422 (killed 11)
+    ✓ POST /api/papers/upload rejects a PDF with no text layer (e.g. a scan) with 422 (killed 3)
+    ✓ POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension (killed 4)
+    ✓ POST /api/papers/upload accepts a .pdf name even when the browser sends a generic MIME type (killed 3)
+    ✓ POST /api/papers/upload rejects real PDF bytes that are declared as neither PDF name nor PDF type (killed 1)
+    ✓ POST /api/papers/upload falls back to "Untitled PDF" when the file name is blank (killed 3)
+    ~ POST /api/papers/upload stores the full text of every page for later Q&A (covered 210)
+    ✓ POST /api/papers/upload reports a Gemini failure and does not leave a file behind (killed 13)
+  requirements.test.js
+    ✓ README: "Persistent paper library ... survives page refreshes and server restarts" papers saved by one server instance are visible after a restart (killed 1)
+    ✓ README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation (killed 10)
+    ~ README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence (covered 191)
+    ~ README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence (covered 191)
+    ~ README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "—" as verified evidence (covered 191)
+    ~ README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "..." as verified evidence (covered 191)
+    ✓ README: "Not enough information is a normal answer" returns 200 with found_in_paper=false and no evidence (killed 2)
+    ✓ README: "Gemini is told to use only the paper text ... and to say when something is not stated" the Q&A prompt fences the paper text, states the grounding rules and ends with the question (killed 3)
+    ✓ README: "Gemini is told to use only the paper text ... and to say when something is not stated" the summary prompt asks for "Not stated in the paper." for unsupported fields (killed 1)
+    ✓ README: "The Gemini API key stays on the server" is never included in API responses, even in Gemini error messages (killed 1)
+    ✓ README: "PDFs are stored ... under randomly generated names (the original filename is never used as a path)" a path-traversal file name cannot choose where the PDF is written (killed 5)
+    ~ README: "PDFs are stored ... under randomly generated names (the original filename is never used as a path)" [BUG-4] uses the file name without its extension as the placeholder title, whatever the case (covered 196)
+    ~ README: "All API inputs are validated" rejects the non-numeric year {"value":2017} (covered 67)
+    ~ README: "All API inputs are validated" rejects the non-numeric year true (covered 70)
+    ~ README: "All API inputs are validated" [BUG-5] rejects a year sent as an array (covered 95)
+    ✓ README: "Very long documents (over about 120,000 characters) are not sent in full" a 300K-character paper is cut down before being sent to Gemini, and the response says so (killed 10)
+  service.content.test.js
+    ✓ getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it (killed 40)
+    ✓ getPaperWithText: downloading a saved result refuses to fetch http://arxiv.org/pdf/1706.03762 (SSRF protection) (killed 6)
+    ~ getPaperWithText: downloading a saved result refuses to fetch https://evil.example.com/paper.pdf (SSRF protection) (covered 41)
+    ~ getPaperWithText: downloading a saved result refuses to fetch https://169.254.169.254/latest/meta-data (SSRF protection) (covered 41)
+    ~ getPaperWithText: downloading a saved result refuses to fetch https://arxiv.org.evil.com/pdf/1 (SSRF protection) (covered 41)
+    ✓ getPaperWithText: downloading a saved result rejects an unparsable stored PDF link (killed 2)
+    ✓ getPaperWithText: downloading a saved result rejects a download redirected to a non-arXiv host (killed 3)
+    ✓ getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts (killed 1)
+    ✓ getPaperWithText: downloading a saved result rejects bad downloads (0) (killed 3)
+    ✓ getPaperWithText: downloading a saved result rejects bad downloads (1) (killed 3)
+    ✓ getPaperWithText: downloading a saved result rejects bad downloads (2) (killed 3)
+    ✓ getPaperWithText: downloading a saved result rejects bad downloads (3) (killed 3)
+    ✓ getPaperWithText: downloading a saved result maps network failures (0) (killed 5)
+    ✓ getPaperWithText: downloading a saved result maps network failures (1) (killed 2)
+    ✓ AI routes on a saved result summary reports content_source "downloaded" on first use (killed 5)
+    ✓ AI routes on a saved result maps an unreadable downloaded PDF to 422 with a clear message (killed 7)
+    ✓ AI routes on a saved result maps a blocked host to 422 through the API (killed 2)
+  service.gemini.test.js
+    ✓ generateJson sends the prompt, schema and key header, and parses the JSON reply (killed 26)
+    ✓ generateJson retries a temporary 503 on the same model, then succeeds (killed 8)
+    ✓ generateJson falls back to the next model after the retries are used up (killed 5)
+    ✓ generateJson skips retries when the daily quota is used up (killed 4)
+    ✓ generateJson reports a daily-quota error (503) when every model is out of quota (killed 1)
+    ✓ generateJson reports "temporarily unavailable" (503) when every model stays overloaded (killed 2)
+    ✓ generateJson does not retry or fall back on a non-temporary error (killed 3)
+    ✓ generateJson uses the HTTP status when the error body is not JSON (killed 1)
+    ✓ generateJson maps network failures (0) (killed 5)
+    ✓ generateJson maps network failures (1) (killed 2)
+    ✓ generateJson fails with 500 when no API key is configured, without calling Gemini (killed 2)
+    ✓ generateJson reports why Gemini returned no text (killed 9)
+    ✓ generateJson waits 1.5 s, then 4 s, between retries (killed 1)
+    ✓ generateJson retries a per-minute 429 on the same model (only per-day quotas skip retries) (killed 1)
+    ✓ generateJson treats a 429 as daily-quota if any violation is per-day (killed 2)
+    ✓ generateJson retries a 503 whose body is not JSON and reports its status (killed 2)
+    ✓ generateJson reads the model list from the environment, trimming and de-duplicating it (killed 2)
+    ✓ generateJson uses the default model when none is configured, and no fallback when the list is empty (killed 1)
+    ✓ generateJson omits the JSON response settings when no schema is given (killed 1)
+    ✓ generateJson joins a reply split across several parts (killed 2)
+    ✓ generateJson says "empty response" when there is no candidate and no block reason (killed 2)
+    ✓ generateJson rejects malformed JSON output (killed 2)
+  service.llm.test.js
+    ✓ summarizePaper requests all seven fields in order and cleans whitespace in each (killed 8)
+    ~ summarizePaper replaces an empty or non-text field ("") with the "not stated" text (covered 97)
+    ~ summarizePaper replaces an empty or non-text field ("   ") with the "not stated" text (covered 97)
+    ~ summarizePaper replaces an empty or non-text field (null) with the "not stated" text (covered 97)
+    ~ summarizePaper replaces an empty or non-text field (42) with the "not stated" text (covered 97)
+    ~ summarizePaper replaces an empty or non-text field (["list"]) with the "not stated" text (covered 97)
+    ✓ summarizePaper puts the title, authors and year in a fenced <paper> block (killed 6)
+    ✓ summarizePaper says "unknown" for missing authors and year (killed 2)
+    ✓ answerQuestion returns the cleaned answer, the question, verified evidence and the model (killed 10)
+    ✓ answerQuestion only treats found_in_paper === true as found (got "true") (killed 3)
+    ~ answerQuestion only treats found_in_paper === true as found (got 1) (covered 122)
+    ~ answerQuestion only treats found_in_paper === true as found (got null) (covered 122)
+    ~ answerQuestion only treats found_in_paper === true as found (got undefined) (covered 122)
+    ✓ answerQuestion does not repeat the not-enough-information sentence when the model already used it (killed 1)
+    ✓ answerQuestion uses the not-enough-information sentence alone when the model gives no answer (killed 1)
+    ~ answerQuestion treats non-array evidence ("a string") as no evidence, with a warning (covered 125)
+    ~ answerQuestion treats non-array evidence (null) as no evidence, with a warning (covered 125)
+    ~ answerQuestion treats non-array evidence ({"0":"x"}) as no evidence, with a warning (covered 125)
+    ✓ answerQuestion drops blank and non-string quotes but keeps valid ones in order (killed 1)
+    ✓ answerQuestion verifies quotes against the full paper text, not only the part sent to the model (killed 1)
+    ✓ answerQuestion asks for the structured answer schema (killed 20)
+  service.metadata.test.js
+    ✓ extractMetadata keeps metadata that appears in the PDF, tolerating line breaks and hyphenation (killed 32)
+    ✓ extractMetadata only sends the first two pages to Gemini (killed 3)
+    ✓ extractMetadata drops an author that only appears on a later page (killed 1)
+    ✓ extractMetadata discards an unsupported year: {"year":2018,"year_evidence":"NIPS 2017"} (evidence does not contain the year) (killed 8)
+    ~ extractMetadata discards an unsupported year: {"year":2017,"year_evidence":"ICML 2017"} (evidence is not in the PDF) (covered 131)
+    ~ extractMetadata discards an unsupported year: {"year":2017,"year_evidence":null} (no evidence) (covered 121)
+    ~ extractMetadata ignores a non-integer year (covered 119)
+    ✓ extractMetadata discards a paraphrased abstract (killed 6)
+    ✓ extractMetadata accepts a long abstract whose start and end match despite small cleanup differences (killed 6)
+    ✓ extractMetadata sends at most 15,000 characters of the first pages (killed 1)
+    ✓ extractMetadata cleans line breaks in the title and keeps it when it matches (killed 1)
+    ✓ extractMetadata requires a short abstract (≤200 chars) to match exactly: no start/end tolerance (killed 1)
+    ✓ extractMetadata rejects a long abstract whose ending does not match (killed 1)
+    ✓ extractMetadata warns about every missing field (killed 7)
+  service.pdf.test.js
+    ✓ extractPdfText returns trimmed text per page and the page count (killed 2)
+    ✓ extractPdfText accepts exactly 200 non-space characters and rejects 199 (killed 3)
+    ✓ extractPdfText does not count whitespace as readable text (killed 1)
+    ✓ extractPdfText reports a password-protected PDF (killed 4)
+    ✓ extractPdfText reports an unexpected text-extraction failure (killed 2)
+    ~ extractPdfText does not modify the caller's buffer (covered 17)
+  unit.context.test.js
+    ✓ buildContext: size threshold sends a paper of exactly MAX_CONTEXT_CHARS in full (killed 4)
+    ~ buildContext: size threshold truncates a paper one character over the limit (covered 71)
+    ✓ buildContext: summary (no question) keeps whole chunks: 40 x 3000 chars = the 120,000-char budget (killed 21)
+    ✓ buildContext: summary (no question) always includes the first 5 and last 3 chunks (killed 13)
+    ✘ buildContext: summary (no question) spreads the remaining picks evenly: 10 of the 42 middle chunks are skipped, never two in a row (covered 0)
+    ✓ buildContext: summary (no question) keeps chunks in document order and marks every gap (and only gaps) with [...] (killed 6)
+    ✓ buildContext: question picks the chunks that share the most keywords with the question, ignoring case (killed 5)
+    ✓ buildContext: question ranks by score, then by position: with more matches than slots, earlier equal-score chunks win (killed 17)
+    ✓ buildContext: question ignores stopwords and words shorter than 3 letters when scoring (killed 5)
+    ~ buildContext: chunk boundaries ends chunks on a line break when one is in the second half of the chunk (covered 71)
+    ~ buildContext: chunk boundaries cuts at exactly 3000 characters when there is no usable line break (covered 70)
+  unit.services.test.js
+    ✓ buildSearchQuery ANDs words and drops stopwords (killed 8)
+    ✓ buildSearchQuery strips arXiv query syntax characters (killed 3)
+    ✓ buildSearchQuery lower-cases so "AND"/"OR" typed by the user are searched as words, not operators... then dropped as stopwords (killed 1)
+    ~ buildSearchQuery keeps letters from any script, digits, dots and hyphens (covered 19)
+    ~ buildSearchQuery returns an empty string when only stopwords remain (covered 18)
+    ✓ buildSearchQuery keeps at most the first 12 terms (killed 1)
+    ✓ text helpers norm makes PDF line-break hyphenation and ligatures match the plain word (killed 2)
+    ✓ text helpers clean collapses whitespace and rejects non-strings (killed 2)
+    ✓ looksLikePdf detects the %PDF- header within the first KB (killed 1)
+
+[Survived] OptionalChaining
+src/routes/ai.js:27:22
+-       const question = req.body?.question;
++       const question = req.body.question;
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/ai.js:28:35
+-       if (question === undefined || question === null) throw new ValidationError('question is required');
++       if (question === undefined || false) throw new ValidationError('question is required');
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 11 more tests!
+
+
+[Survived] EqualityOperator
+src/routes/ai.js:32:9
+-       if (q.length > MAX_QUESTION_LENGTH) throw new ValidationError(`question must be at most ${MAX_QUESTION_LENGTH} characters`);
++       if (q.length >= MAX_QUESTION_LENGTH) throw new ValidationError(`question must be at most ${MAX_QUESTION_LENGTH} characters`);
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/ai.js:46:7
+-     if (err instanceof GeminiError) {
++     if (true) {
+Tests ran:
+    README: "The Gemini API key stays on the server" is never included in API responses, even in Gemini error messages
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    POST /api/papers/:id/questions maps a non-temporary Gemini error on summary to 502
+
+
+[Survived] StringLiteral
+src/routes/ai.js:47:19
+-       console.error(`Gemini error on ${req.method} ${req.originalUrl}: ${err.message}`);
++       console.error(``);
+Tests ran:
+    README: "The Gemini API key stays on the server" is never included in API responses, even in Gemini error messages
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    POST /api/papers/:id/questions maps a non-temporary Gemini error on summary to 502
+
+
+[NoCoverage] StringLiteral
+src/routes/papers.js:124:32
+-           if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
++           if (err) console.error(``, err);
+
+[Survived] ConditionalExpression
+src/routes/papers.js:27:30
+-     if (value === undefined || value === null) return null;
++     if (value === undefined || false) return null;
+Tests ran:
+    README: "Persistent paper library ... survives page refreshes and server restarts" papers saved by one server instance are visible after a restart
+    README: "All API inputs are validated" rejects the non-numeric year {"value":2017}
+    README: "All API inputs are validated" rejects the non-numeric year true
+  and 28 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/papers.js:52:7
+-     if (!body || typeof body !== 'object' || Array.isArray(body)) {
++     if (false || Array.isArray(body)) {
+Tests ran:
+    README: "Persistent paper library ... survives page refreshes and server restarts" papers saved by one server instance are visible after a restart
+    README: "All API inputs are validated" rejects the non-numeric year {"value":2017}
+    README: "All API inputs are validated" rejects the non-numeric year true
+  and 30 more tests!
+
+
+[Survived] LogicalOperator
+src/routes/papers.js:52:7
+-     if (!body || typeof body !== 'object' || Array.isArray(body)) {
++     if (!body && typeof body !== 'object' || Array.isArray(body)) {
+Tests ran:
+    README: "Persistent paper library ... survives page refreshes and server restarts" papers saved by one server instance are visible after a restart
+    README: "All API inputs are validated" rejects the non-numeric year {"value":2017}
+    README: "All API inputs are validated" rejects the non-numeric year true
+  and 30 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/papers.js:52:16
+-     if (!body || typeof body !== 'object' || Array.isArray(body)) {
++     if (!body || false || Array.isArray(body)) {
+Tests ran:
+    README: "Persistent paper library ... survives page refreshes and server restarts" papers saved by one server instance are visible after a restart
+    README: "All API inputs are validated" rejects the non-numeric year {"value":2017}
+    README: "All API inputs are validated" rejects the non-numeric year true
+  and 30 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/papers.js:102:7
+-     if (paper.external_id) {
++     if (true) {
+Tests ran:
+    README: "Persistent paper library ... survives page refreshes and server restarts" papers saved by one server instance are visible after a restart
+    README: "All API inputs are validated" [BUG-5] rejects a year sent as an array
+    paper library CRUD saves a paper and returns it with server-managed fields
+  and 11 more tests!
+
+
+[Survived] ObjectLiteral
+src/routes/papers.js:115:47
+-     if (!internals) return res.status(404).json({ error: 'Paper not found' });
++     if (!internals) return res.status(404).json({});
+Tests ran:
+    paper library CRUD deletes a paper (204) and then reports 404
+
+
+[Survived] StringLiteral
+src/routes/papers.js:115:56
+-     if (!internals) return res.status(404).json({ error: 'Paper not found' });
++     if (!internals) return res.status(404).json({ error: "" });
+Tests ran:
+    paper library CRUD deletes a paper (204) and then reports 404
+
+
+[Survived] ObjectLiteral
+src/routes/papers.js:123:23
+-         fs.rm(resolved, { force: true }, (err) => {
++         fs.rm(resolved, {}, (err) => {
+Tests ran:
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+
+
+[Survived] BooleanLiteral
+src/routes/papers.js:123:32
+-         fs.rm(resolved, { force: true }, (err) => {
++         fs.rm(resolved, { force: false }, (err) => {
+Tests ran:
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+
+
+[Survived] BlockStatement
+src/routes/papers.js:123:49
+-         fs.rm(resolved, { force: true }, (err) => {
+-           if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
+-         });
++         fs.rm(resolved, { force: true }, (err) => {});
+Tests ran:
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+
+
+[Survived] ConditionalExpression
+src/routes/papers.js:124:13
+-           if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
++           if (true) console.error(`Failed to delete PDF ${resolved}:`, err);
+Tests ran:
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+
+
+[Survived] ConditionalExpression
+src/routes/papers.js:124:13
+-           if (err) console.error(`Failed to delete PDF ${resolved}:`, err);
++           if (false) console.error(`Failed to delete PDF ${resolved}:`, err);
+Tests ran:
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+
+
+[Survived] StringLiteral
+src/routes/papers.js:89:12
+-   router.get('/', (req, res) => {
++   router.get("", (req, res) => {
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/routes/papers.js:99:13
+-   router.post('/', (req, res) => {
++   router.post("", (req, res) => {
+Ran all tests for this mutant.
+
+[Survived] EqualityOperator
+src/routes/search.js:18:7
+-     if (query.length > MAX_QUERY_LENGTH) {
++     if (query.length >= MAX_QUERY_LENGTH) {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search rejects {"q":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} with 400
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/search.js:26:9
+-       if (err instanceof ArxivError) {
++       if (true) {
+Tests ran:
+    GET /api/search maps an arXiv 429 to a 503 with a user-facing message
+    GET /api/search says "unknown error" when arXiv rejects a query without explaining
+    GET /api/search reports a query arXiv rejects
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/routes/search.js:27:21
+-         console.error(`Search failed for "${query}": ${err.message}`);
++         console.error(``);
+Tests ran:
+    GET /api/search maps an arXiv 429 to a 503 with a user-facing message
+    GET /api/search says "unknown error" when arXiv rejects a query without explaining
+    GET /api/search reports a query arXiv rejects
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/routes/search.js:10:12
+-   router.get('/', async (req, res, next) => {
++   router.get("", async (req, res, next) => {
+Ran all tests for this mutant.
+
+[NoCoverage] ArrayDeclaration
+src/routes/upload.js:34:55
+-         const [status, message] = messages[err.code] ?? [400, err.message];
++         const [status, message] = messages[err.code] ?? [];
+
+[NoCoverage] ObjectLiteral
+src/routes/upload.js:86:45
+-       if (storedPath) await fs.rm(storedPath, { force: true }).catch(() => {});
++       if (storedPath) await fs.rm(storedPath, {}).catch(() => {});
+
+[NoCoverage] BooleanLiteral
+src/routes/upload.js:86:54
+-       if (storedPath) await fs.rm(storedPath, { force: true }).catch(() => {});
++       if (storedPath) await fs.rm(storedPath, { force: false }).catch(() => {});
+
+[Survived] StringLiteral
+src/routes/upload.js:30:33
+-           LIMIT_FILE_COUNT: [400, 'Upload exactly one PDF file'],
++           LIMIT_FILE_COUNT: [400, ""],
+Tests ran:
+    POST /api/papers/upload rejects files over 20 MB with 413
+    POST /api/papers/upload rejects a file sent in the wrong form field
+    POST /api/papers/upload rejects more than one file
+  and 1 more test!
+
+
+[Survived] ObjectLiteral
+src/routes/upload.js:71:49
+-       await fs.writeFile(storedPath, file.buffer, { flag: 'wx' });
++       await fs.writeFile(storedPath, file.buffer, {});
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/routes/upload.js:71:57
+-       await fs.writeFile(storedPath, file.buffer, { flag: 'wx' });
++       await fs.writeFile(storedPath, file.buffer, { flag: "" });
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/routes/upload.js:80:29
+-         full_text: pages.join('\n\n'),
++         full_text: pages.join(""),
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/upload.js:83:9
+-       if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`);
++       if (true) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/routes/upload.js:83:9
+-       if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`);
++       if (false) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/routes/upload.js:83:44
+-       if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`);
++       if (meta.warnings.length) console.warn(``);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/routes/upload.js:83:87
+-       if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join('; ')}`);
++       if (meta.warnings.length) console.warn(`Upload #${paper.id}: ${meta.warnings.join("")}`);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/routes/upload.js:43:13
+-   router.post('/', receiveSinglePdf, async (req, res, next) => {
++   router.post("", receiveSinglePdf, async (req, res, next) => {
+Ran all tests for this mutant.
+
+[NoCoverage] ArrayDeclaration
+src/services/arxiv.js:67:33
+-     const hasPdf = (entry.link ?? []).some((l) => l.title === 'pdf' || l.type === 'application/pdf');
++     const hasPdf = (entry.link ?? ["Stryker was here"]).some((l) => l.title === 'pdf' || l.type === 'application/pdf');
+
+[NoCoverage] BlockStatement
+src/services/arxiv.js:112:11
+-     } catch {
+-       feed = undefined;
+-     }
++     } catch {}
+
+[Survived] MethodExpression
+src/services/arxiv.js:29:47
+-   const clean = (s) => (typeof s === 'string' ? s.replace(/\s+/g, ' ').trim() : '');
++   const clean = (s) => (typeof s === 'string' ? s.replace(/\s+/g, ' ') : '');
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions
+    GET /api/search says "unknown error" when arXiv rejects a query without explaining
+  and 4 more tests!
+
+
+[Survived] Regex
+src/services/arxiv.js:48:12
+-       .split(/\s+/)
++       .split(/\s/)
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search maps an arXiv 429 to a 503 with a user-facing message
+  and 18 more tests!
+
+
+[Survived] MethodExpression
+src/services/arxiv.js:66:32
+-     const year = Number.parseInt(clean(entry.published).slice(0, 4), 10);
++     const year = Number.parseInt(clean(entry.published), 10);
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions
+    GET /api/search reports the total number of matches, not just the page size
+  and 2 more tests!
+
+
+[Survived] ArrayDeclaration
+src/services/arxiv.js:73:31
+-       authors: (entry.author ?? []).map((a) => clean(a?.name)).filter(Boolean),
++       authors: (entry.author ?? ["Stryker was here"]).map((a) => clean(a?.name)).filter(Boolean),
+Tests ran:
+    GET /api/search detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions
+    GET /api/search handles old-style arXiv ids, missing PDF links and missing dates
+
+
+[Survived] OptionalChaining
+src/services/arxiv.js:73:52
+-       authors: (entry.author ?? []).map((a) => clean(a?.name)).filter(Boolean),
++       authors: (entry.author ?? []).map((a) => clean(a.name)).filter(Boolean),
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions
+    GET /api/search reports the total number of matches, not just the page size
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/services/arxiv.js:89:12
+-       start: '0',
++       start: "",
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search maps an arXiv 429 to a 503 with a user-facing message
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/services/arxiv.js:91:13
+-       sortBy: 'relevance',
++       sortBy: "",
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search maps an arXiv 429 to a 503 with a user-facing message
+  and 11 more tests!
+
+
+[Survived] OptionalChaining
+src/services/arxiv.js:117:22
+-     const errorEntry = feed?.entry?.find((e) => clean(e?.id).includes('/api/errors'));
++     const errorEntry = feed?.entry.find((e) => clean(e?.id).includes('/api/errors'));
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 8 more tests!
+
+
+[Survived] OptionalChaining
+src/services/arxiv.js:111:12
+-       feed = parser.parse(body)?.feed;
++       feed = parser.parse(body).feed;
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 8 more tests!
+
+
+[Survived] OptionalChaining
+src/services/arxiv.js:117:53
+-     const errorEntry = feed?.entry?.find((e) => clean(e?.id).includes('/api/errors'));
++     const errorEntry = feed?.entry?.find((e) => clean(e.id).includes('/api/errors'));
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions
+    GET /api/search says "unknown error" when arXiv rejects a query without explaining
+  and 4 more tests!
+
+
+[Survived] LogicalOperator
+src/services/arxiv.js:124:7
+-     if (!feed || typeof feed !== 'object') {
++     if (!feed && typeof feed !== 'object') {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/arxiv.js:124:16
+-     if (!feed || typeof feed !== 'object') {
++     if (!feed || false) {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/services/arxiv.js:128:33
+-     const entries = feed.entry ?? [];
++     const entries = feed.entry ?? ["Stryker was here"];
+Tests ran:
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+
+
+[Survived] ConditionalExpression
+src/services/arxiv.js:130:7
+-     if (results.length < entries.length) {
++     if (true) {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 4 more tests!
+
+
+[Survived] BlockStatement
+src/services/arxiv.js:130:40
+-     if (results.length < entries.length) {
+-       console.warn(`arXiv: skipped ${entries.length - results.length} malformed entries`);
+-     }
++     if (results.length < entries.length) {}
+Tests ran:
+    GET /api/search skips malformed entries without failing the search
+
+
+[Survived] EqualityOperator
+src/services/arxiv.js:130:7
+-     if (results.length < entries.length) {
++     if (results.length <= entries.length) {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/arxiv.js:130:7
+-     if (results.length < entries.length) {
++     if (false) {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/services/arxiv.js:130:7
+-     if (results.length < entries.length) {
++     if (results.length >= entries.length) {
+Tests ran:
+    GET /api/search returns normalized arXiv results
+    GET /api/search sends an AND query without stopwords to arXiv
+    GET /api/search passes a timeout signal to fetch
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/services/arxiv.js:131:18
+-       console.warn(`arXiv: skipped ${entries.length - results.length} malformed entries`);
++       console.warn(``);
+Tests ran:
+    GET /api/search skips malformed entries without failing the search
+
+
+[Survived] ArithmeticOperator
+src/services/arxiv.js:131:36
+-       console.warn(`arXiv: skipped ${entries.length - results.length} malformed entries`);
++       console.warn(`arXiv: skipped ${entries.length + results.length} malformed entries`);
+Tests ran:
+    GET /api/search skips malformed entries without failing the search
+
+
+[Survived] StringLiteral
+src/services/arxiv.js:35:3
+-     'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
++     "", 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:35:8
+-     'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
++     'a', "", 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:35:27
+-     'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
++     'a', 'an', 'the', 'is', "", 'was', 'were', 'be', 'of', 'for', 'and', 'or',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:35:34
+-     'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
++     'a', 'an', 'the', 'is', 'are', "", 'were', 'be', 'of', 'for', 'and', 'or',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:35:41
+-     'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
++     'a', 'an', 'the', 'is', 'are', 'was', "", 'be', 'of', 'for', 'and', 'or',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:35:49
+-     'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'of', 'for', 'and', 'or',
++     'a', 'an', 'the', 'is', 'are', 'was', 'were', "", 'of', 'for', 'and', 'or',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:3
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     "", 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:9
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', "", 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:15
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', "", 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:21
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', "", 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:29
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', "", 'as', 'at', 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:35
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', "", 'at', 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:41
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', 'as', "", 'that', 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:47
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', 'as', 'at', "", 'this', 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:55
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', "", 'it', 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:63
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', "", 'not', 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:69
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', "", 'no',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:36:76
+-     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', 'no',
++     'in', 'on', 'to', 'with', 'by', 'as', 'at', 'that', 'this', 'it', 'not', "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:3
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     "", 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:10
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', "", 'if', 'then', 'than', 'such', 'these', 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:18
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', "", 'then', 'than', 'such', 'these', 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:24
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', 'if', "", 'than', 'such', 'these', 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:32
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', 'if', 'then', "", 'such', 'these', 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:40
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', 'if', 'then', 'than', "", 'these', 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:48
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', 'if', 'then', 'than', 'such', "", 'those', 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:57
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', 'if', 'then', 'than', 'such', 'these', "", 'there',
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/arxiv.js:37:66
+-     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', 'there',
++     'but', 'into', 'if', 'then', 'than', 'such', 'these', 'those', "",
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/content.js:32:33
+-       response = await fetch(url, { signal: AbortSignal.timeout(DOWNLOAD_TIMEOUT_MS) });
++       response = await fetch(url, {});
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result rejects a download redirected to a non-arXiv host
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+  and 8 more tests!
+
+
+[Survived] EqualityOperator
+src/services/content.js:45:7
+-     if (Number(response.headers.get('content-length')) > MAX_PDF_BYTES) {
++     if (Number(response.headers.get('content-length')) >= MAX_PDF_BYTES) {
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+    getPaperWithText: downloading a saved result rejects bad downloads (1)
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/services/content.js:54:9
+-       if (size > MAX_PDF_BYTES) throw new ContentError('Paper PDF is too large to process', 422);
++       if (size >= MAX_PDF_BYTES) throw new ContentError('Paper PDF is too large to process', 422);
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+    getPaperWithText: downloading a saved result rejects bad downloads (2)
+  and 3 more tests!
+
+
+[Survived] BlockStatement
+src/services/content.js:75:23
+-     if (!paper.pdf_url) {
+-       throw new ContentError('This paper has no full text or PDF link, so it cannot be summarized or queried', 422);
+-     }
++     if (!paper.pdf_url) {}
+Tests ran:
+    POST /api/papers/:id/summary returns 422 for a paper with no text and no PDF link
+
+
+[Survived] MethodExpression
+src/services/content.js:73:17
+-     if (stored && stored.trim()) return { paper, text: stored, contentSource: 'stored' };
++     if (stored && stored) return { paper, text: stored, contentSource: 'stored' };
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/services/content.js:76:28
+-       throw new ContentError('This paper has no full text or PDF link, so it cannot be summarized or queried', 422);
++       throw new ContentError("", 422);
+Tests ran:
+    POST /api/papers/:id/summary returns 422 for a paper with no text and no PDF link
+
+
+[Survived] ConditionalExpression
+src/services/content.js:75:7
+-     if (!paper.pdf_url) {
++     if (false) {
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result refuses to fetch http://arxiv.org/pdf/1706.03762 (SSRF protection)
+    getPaperWithText: downloading a saved result refuses to fetch https://evil.example.com/paper.pdf (SSRF protection)
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/services/content.js:81:27
+-     const text = pages.join('\n\n');
++     const text = pages.join("");
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+    AI routes on a saved result summary reports content_source "downloaded" on first use
+
+
+[Survived] StringLiteral
+src/services/content.js:83:15
+-     console.log(`Paper #${id}: downloaded ${paper.pdf_url} (${buffer.length} bytes), stored ${text.length} chars of text`);
++     console.log(``);
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+    AI routes on a saved result summary reports content_source "downloaded" on first use
+
+
+[Survived] StringLiteral
+src/services/content.js:17:49
+-   const ALLOWED_PDF_HOSTS = new Set(['arxiv.org', 'www.arxiv.org', 'export.arxiv.org']);
++   const ALLOWED_PDF_HOSTS = new Set(['arxiv.org', "", 'export.arxiv.org']);
+Ran all tests for this mutant.
+
+[NoCoverage] ArrayDeclaration
+src/services/context.js:38:114
+-   const keywords = (s) => new Set(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)?.filter((w) => !STOPWORDS.has(w)) ?? []);
++   const keywords = (s) => new Set(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)?.filter((w) => !STOPWORDS.has(w)) ?? ["Stryker was here"]);
+
+[Survived] OptionalChaining
+src/services/context.js:38:33
+-   const keywords = (s) => new Set(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)?.filter((w) => !STOPWORDS.has(w)) ?? []);
++   const keywords = (s) => new Set(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu).filter((w) => !STOPWORDS.has(w)) ?? []);
+Tests ran:
+    buildContext: question picks the chunks that share the most keywords with the question, ignoring case
+    buildContext: question ranks by score, then by position: with more matches than slots, earlier equal-score chunks win
+    buildContext: question ignores stopwords and words shorter than 3 letters when scoring
+  and 1 more test!
+
+
+[Survived] MethodExpression
+src/services/context.js:56:26
+-       const score = (i) => [...keywords(chunks[i])].filter((w) => q.has(w)).length;
++       const score = (i) => [...keywords(chunks[i])].length;
+Tests ran:
+    buildContext: question picks the chunks that share the most keywords with the question, ignoring case
+    buildContext: question ranks by score, then by position: with more matches than slots, earlier equal-score chunks win
+    buildContext: question ignores stopwords and words shorter than 3 letters when scoring
+  and 1 more test!
+
+
+[Survived] ArithmeticOperator
+src/services/context.js:57:76
+-       picks = middle.map((i) => [i, score(i)]).sort((a, b) => b[1] - a[1] || a[0] - b[0]).slice(0, slots).map(([i]) => i);
++       picks = middle.map((i) => [i, score(i)]).sort((a, b) => b[1] - a[1] || a[0] + b[0]).slice(0, slots).map(([i]) => i);
+Tests ran:
+    buildContext: question picks the chunks that share the most keywords with the question, ignoring case
+    buildContext: question ranks by score, then by position: with more matches than slots, earlier equal-score chunks win
+    buildContext: question ignores stopwords and words shorter than 3 letters when scoring
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/services/context.js:28:9
+-       if (end < text.length) {
++       if (true) {
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/services/context.js:28:9
+-       if (end < text.length) {
++       if (false) {
+Ran all tests for this mutant.
+
+[Survived] EqualityOperator
+src/services/context.js:28:9
+-       if (end < text.length) {
++       if (end <= text.length) {
+Ran all tests for this mutant.
+
+[Survived] EqualityOperator
+src/services/context.js:28:9
+-       if (end < text.length) {
++       if (end >= text.length) {
+Ran all tests for this mutant.
+
+[Survived] BlockStatement
+src/services/context.js:28:28
+-       if (end < text.length) {
+-         const nl = text.lastIndexOf('\n', end);
+-         if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
+-       }
++       if (end < text.length) {}
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/services/context.js:30:11
+-         if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
++         if (false) end = nl + 1;
+Ran all tests for this mutant.
+
+[Survived] EqualityOperator
+src/services/context.js:30:11
+-         if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
++         if (nl >= start + CHUNK_CHARS / 2) end = nl + 1;
+Ran all tests for this mutant.
+
+[Survived] ArithmeticOperator
+src/services/context.js:30:24
+-         if (nl > start + CHUNK_CHARS / 2) end = nl + 1;
++         if (nl > start + CHUNK_CHARS * 2) end = nl + 1;
+Ran all tests for this mutant.
+
+[NoCoverage] ArrayDeclaration
+src/services/gemini.js:23:35
+-     return (data?.error?.details ?? []).some((d) =>
++     return (data?.error?.details ?? ["Stryker was here"]).some((d) =>
+
+[NoCoverage] ArrayDeclaration
+src/services/gemini.js:30:76
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? ["Stryker was here"]).map((v) => v?.quotaId).filter(Boolean);
+
+[Survived] OptionalChaining
+src/services/gemini.js:23:11
+-     return (data?.error?.details ?? []).some((d) =>
++     return (data?.error.details ?? []).some((d) =>
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:23:11
+-     return (data?.error?.details ?? []).some((d) =>
++     return (data.error?.details ?? []).some((d) =>
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:24:5
+-       d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
++       d?.violations.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:24:5
+-       d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
++       d.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:24:47
+-       d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
++       d?.violations?.some((v) => /PerDay/i.test(v.quotaId ?? ''))
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:24:61
+-       d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? ''))
++       d?.violations?.some((v) => /PerDay/i.test(v?.quotaId ?? "Stryker was here!"))
+Tests ran:
+    generateJson treats a 429 as daily-quota if any violation is per-day
+
+
+[Survived] BlockStatement
+src/services/gemini.js:29:25
+-   function quotaIds(data) {
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
+-     return ids.length ? ` [${ids.join(', ')}]` : '';
+-   }
++   function quotaIds(data) {}
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+  and 9 more tests!
+
+
+[Survived] MethodExpression
+src/services/gemini.js:30:15
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap(d => d?.violations ?? []).map(v => v?.quotaId);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+  and 9 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:30:16
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+  and 9 more tests!
+
+
+[Survived] ArrayDeclaration
+src/services/gemini.js:30:40
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? ["Stryker was here"]).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
+Tests ran:
+    generateJson retries a 503 whose body is not JSON and reports its status
+
+
+[Survived] LogicalOperator
+src/services/gemini.js:30:59
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations && []).map((v) => v?.quotaId).filter(Boolean);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] ArrowFunction
+src/services/gemini.js:30:52
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap(() => undefined).map((v) => v?.quotaId).filter(Boolean);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+  and 9 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:30:59
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap((d) => d.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] ArrowFunction
+src/services/gemini.js:30:84
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map(() => undefined).filter(Boolean);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+  and 9 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:30:91
+-     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v?.quotaId).filter(Boolean);
++     const ids = (data?.error?.details ?? []).flatMap((d) => d?.violations ?? []).map((v) => v.quotaId).filter(Boolean);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:31:48
+-     return ids.length ? ` [${ids.join(', ')}]` : '';
++     return ids.length ? ` [${ids.join(', ')}]` : "Stryker was here!";
+Tests ran:
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+    generateJson reports "temporarily unavailable" (503) when every model stays overloaded
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:31:23
+-     return ids.length ? ` [${ids.join(', ')}]` : '';
++     return ids.length ? `` : '';
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:31:37
+-     return ids.length ? ` [${ids.join(', ')}]` : '';
++     return ids.length ? ` [${ids.join("")}]` : '';
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:55:52
+-     const body = JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], generationConfig });
++     const body = JSON.stringify({ contents: [{ role: "", parts: [{ text: prompt }] }], generationConfig });
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 79 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:65:19
+-             method: 'POST',
++             method: "",
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 79 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:66:38
+-             headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
++             headers: { 'Content-Type': "", 'x-goog-api-key': apiKey },
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 79 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/gemini.js:77:20
+-         dailyQuota = response.status === 429 && isDailyQuotaError(data);
++         dailyQuota = true && isDailyQuotaError(data);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+  and 9 more tests!
+
+
+[Survived] ArrowFunction
+src/services/gemini.js:74:42
+-         data = await response.json().catch(() => null);
++         data = await response.json().catch(() => undefined);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 77 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:80:77
+-           console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up)' : ''}${quotas}; trying next model`);
++           console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? "" : ''}${quotas}; trying next model`);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson skips retries when the daily quota is used up
+    generateJson reports a daily-quota error (503) when every model is out of quota
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:80:22
+-           console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up)' : ''}${quotas}; trying next model`);
++           console.warn(``);
+Tests ran:
+    POST /api/papers/:id/questions maps Gemini being out of quota on every model to 503
+    generateJson falls back to the next model after the retries are used up
+    generateJson skips retries when the daily quota is used up
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/services/gemini.js:80:104
+-           console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up)' : ''}${quotas}; trying next model`);
++           console.warn(`Gemini ${model} HTTP ${response.status}${dailyQuota ? ' (daily quota used up)' : "Stryker was here!"}${quotas}; trying next model`);
+Tests ran:
+    generateJson falls back to the next model after the retries are used up
+    generateJson reports "temporarily unavailable" (503) when every model stays overloaded
+    generateJson retries a 503 whose body is not JSON and reports its status
+
+
+[Survived] StringLiteral
+src/services/gemini.js:83:20
+-         console.warn(`Gemini ${model} HTTP ${response.status}${quotas}; retrying`);
++         console.warn(``);
+Tests ran:
+    generateJson retries a temporary 503 on the same model, then succeeds
+    generateJson falls back to the next model after the retries are used up
+    generateJson reports "temporarily unavailable" (503) when every model stays overloaded
+  and 3 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:98:21
+-     const candidate = data?.candidates?.[0];
++     const candidate = data.candidates?.[0];
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 66 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:99:16
+-     const text = candidate?.content?.parts?.map((p) => p.text ?? '').join('');
++     const text = candidate?.content?.parts.map((p) => p.text ?? '').join('');
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 66 more tests!
+
+
+[Survived] OptionalChaining
+src/services/gemini.js:101:47
+-       const reason = candidate?.finishReason ?? data?.promptFeedback?.blockReason ?? 'empty response';
++       const reason = candidate?.finishReason ?? data.promptFeedback?.blockReason ?? 'empty response';
+Tests ran:
+    generateJson reports why Gemini returned no text
+    generateJson says "empty response" when there is no candidate and no block reason
+
+
+[Survived] StringLiteral
+src/services/gemini.js:3:33
+-   const DEFAULT_FALLBACK_MODELS = 'gemini-3.8-flash,gemini-3.5-flash-lite';
++   const DEFAULT_FALLBACK_MODELS = "";
+Ran all tests for this mutant.
+
+[Survived] OptionalChaining
+src/services/llm.js:56:74
+-     const summary = Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, clean(raw?.[f]) || NOT_STATED]));
++     const summary = Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, clean(raw[f]) || NOT_STATED]));
+Tests ran:
+    README: "Gemini is told to use only the paper text ... and to say when something is not stated" the summary prompt asks for "Not stated in the paper." for unsupported fields
+    README: "Very long documents (over about 120,000 characters) are not sent in full" a 300K-character paper is cut down before being sent to Gemini, and the response says so
+    AI routes on a saved result summary reports content_source "downloaded" on first use
+  and 10 more tests!
+
+
+[Survived] OptionalChaining
+src/services/llm.js:88:22
+-     let answer = clean(raw?.answer);
++     let answer = clean(raw.answer);
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 19 more tests!
+
+
+[Survived] OptionalChaining
+src/services/llm.js:87:17
+-     const found = raw?.found_in_paper === true;
++     const found = raw.found_in_paper === true;
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 19 more tests!
+
+
+[Survived] ArrayDeclaration
+src/services/llm.js:94:65
+-     const quotes = (Array.isArray(raw?.evidence) ? raw.evidence : []).map(clean).filter(Boolean);
++     const quotes = (Array.isArray(raw?.evidence) ? raw.evidence : ["Stryker was here"]).map(clean).filter(Boolean);
+Tests ran:
+    answerQuestion does not repeat the not-enough-information sentence when the model already used it
+    answerQuestion uses the not-enough-information sentence alone when the model gives no answer
+    answerQuestion treats non-array evidence ("a string") as no evidence, with a warning
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/llm.js:90:7
+-     if (!answer) answer = NOT_ENOUGH_INFO;
++     if (false) answer = NOT_ENOUGH_INFO;
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 19 more tests!
+
+
+[Survived] OptionalChaining
+src/services/llm.js:94:33
+-     const quotes = (Array.isArray(raw?.evidence) ? raw.evidence : []).map(clean).filter(Boolean);
++     const quotes = (Array.isArray(raw.evidence) ? raw.evidence : []).map(clean).filter(Boolean);
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 19 more tests!
+
+
+[Survived] ArithmeticOperator
+src/services/llm.js:96:27
+-     const dropped = found ? quotes.length - evidence.length : 0;
++     const dropped = found ? quotes.length + evidence.length : 0;
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/services/llm.js:102:29
+-     if (dropped) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) not found in the paper`);
++     if (dropped) console.warn(``);
+Tests ran:
+    POST /api/papers/:id/questions answers with evidence quotes that are verified against the paper
+    POST /api/papers/:id/questions warns when no evidence quote can be verified
+
+
+[Survived] ConditionalExpression
+src/services/llm.js:102:7
+-     if (dropped) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) not found in the paper`);
++     if (true) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) not found in the paper`);
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/llm.js:102:7
+-     if (dropped) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) not found in the paper`);
++     if (false) console.warn(`Q&A paper #${paper.id}: dropped ${dropped} evidence quote(s) not found in the paper`);
+Tests ran:
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" keeps quotes that appear in the paper even with different spacing/case/punctuation
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "…" as verified evidence
+    README: "Evidence verification. Quotes that cannot be found are removed, and if no quote can be verified, the UI shows a warning" [BUG-3] does not treat the punctuation-only quote "\"" as verified evidence
+  and 19 more tests!
+
+
+[Survived] ArrowFunction
+src/services/llm.js:32:53
+-     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
++     properties: Object.fromEntries(SUMMARY_FIELDS.map(() => undefined)),
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/llm.js:31:9
+-     type: 'object',
++     type: "",
+Ran all tests for this mutant.
+
+[Survived] ArrayDeclaration
+src/services/llm.js:32:60
+-     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
++     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [])),
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/llm.js:32:64
+-     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
++     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, {}])),
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/llm.js:32:72
+-     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: 'string' }])),
++     properties: Object.fromEntries(SUMMARY_FIELDS.map((f) => [f, { type: "" }])),
+Ran all tests for this mutant.
+
+[NoCoverage] ArrayDeclaration
+src/services/metadata.js:53:65
+-     for (const name of Array.isArray(raw.authors) ? raw.authors : []) {
++     for (const name of Array.isArray(raw.authors) ? raw.authors : ["Stryker was here"]) {
+
+[Survived] StringLiteral
+src/services/metadata.js:39:45
+-     const sourceText = pages.slice(0, 2).join('\n\n').slice(0, MAX_PROMPT_CHARS);
++     const sourceText = pages.slice(0, 2).join("").slice(0, MAX_PROMPT_CHARS);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/metadata.js:43:24
+-     const found = (s) => norm(s).length > 0 && source.includes(norm(s));
++     const found = (s) => true && source.includes(norm(s));
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/services/metadata.js:43:24
+-     const found = (s) => norm(s).length > 0 && source.includes(norm(s));
++     const found = (s) => norm(s).length >= 0 && source.includes(norm(s));
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/metadata.js:55:9
+-       if (!a) continue;
++       if (false) continue;
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/services/metadata.js:72:45
+-       const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
++       const verbatim = source.includes(a) || (true && source.includes(a.slice(-80)));
+Tests ran:
+    extractMetadata discards a paraphrased abstract
+    extractMetadata accepts a long abstract whose start and end match despite small cleanup differences
+    extractMetadata requires a short abstract (≤200 chars) to match exactly: no start/end tolerance
+  and 1 more test!
+
+
+[Survived] LogicalOperator
+src/services/metadata.js:72:45
+-       const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
++       const verbatim = source.includes(a) || (a.length > 200 || source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
+Tests ran:
+    extractMetadata discards a paraphrased abstract
+    extractMetadata accepts a long abstract whose start and end match despite small cleanup differences
+    extractMetadata requires a short abstract (≤200 chars) to match exactly: no start/end tolerance
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/services/metadata.js:72:45
+-       const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
++       const verbatim = source.includes(a) || (true && source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
+Tests ran:
+    extractMetadata discards a paraphrased abstract
+    extractMetadata accepts a long abstract whose start and end match despite small cleanup differences
+    extractMetadata requires a short abstract (≤200 chars) to match exactly: no start/end tolerance
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/services/metadata.js:72:45
+-       const verbatim = source.includes(a) || (a.length > 200 && source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
++       const verbatim = source.includes(a) || (a.length >= 200 && source.includes(a.slice(0, 80)) && source.includes(a.slice(-80)));
+Tests ran:
+    extractMetadata discards a paraphrased abstract
+    extractMetadata accepts a long abstract whose start and end match despite small cleanup differences
+    extractMetadata requires a short abstract (≤200 chars) to match exactly: no start/end tolerance
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/services/metadata.js:70:7
+-     if (abstract) {
++     if (true) {
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload accepts a PDF declared by MIME type even without a .pdf extension
+  and 19 more tests!
+
+
+[Survived] StringLiteral
+src/services/metadata.js:8:9
+-     type: 'object',
++     type: "",
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:7:16
+-   const SCHEMA = {
+-     type: 'object',
+-     properties: {
+-       title: { type: 'string', nullable: true },
+-       authors: { type: 'array', items: { type: 'string' } },
+-       year: { type: 'integer', nullable: true },
+-       year_evidence: { type: 'string', nullable: true },
+-       abstract: { type: 'string', nullable: true },
+-     },
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
+-   };
++   const SCHEMA = {};
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:9:15
+-     properties: {
+-       title: { type: 'string', nullable: true },
+-       authors: { type: 'array', items: { type: 'string' } },
+-       year: { type: 'integer', nullable: true },
+-       year_evidence: { type: 'string', nullable: true },
+-       abstract: { type: 'string', nullable: true },
+-     },
++     properties: {},
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:10:12
+-       title: { type: 'string', nullable: true },
++       title: {},
+Ran all tests for this mutant.
+
+[Survived] BooleanLiteral
+src/services/metadata.js:10:40
+-       title: { type: 'string', nullable: true },
++       title: { type: 'string', nullable: false },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:10:20
+-       title: { type: 'string', nullable: true },
++       title: { type: "", nullable: true },
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:11:14
+-       authors: { type: 'array', items: { type: 'string' } },
++       authors: {},
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:11:22
+-       authors: { type: 'array', items: { type: 'string' } },
++       authors: { type: "", items: { type: 'string' } },
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:11:38
+-       authors: { type: 'array', items: { type: 'string' } },
++       authors: { type: 'array', items: {} },
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:12:11
+-       year: { type: 'integer', nullable: true },
++       year: {},
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:12:19
+-       year: { type: 'integer', nullable: true },
++       year: { type: "", nullable: true },
+Ran all tests for this mutant.
+
+[Survived] BooleanLiteral
+src/services/metadata.js:12:40
+-       year: { type: 'integer', nullable: true },
++       year: { type: 'integer', nullable: false },
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:13:20
+-       year_evidence: { type: 'string', nullable: true },
++       year_evidence: {},
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:13:28
+-       year_evidence: { type: 'string', nullable: true },
++       year_evidence: { type: "", nullable: true },
+Ran all tests for this mutant.
+
+[Survived] BooleanLiteral
+src/services/metadata.js:13:48
+-       year_evidence: { type: 'string', nullable: true },
++       year_evidence: { type: 'string', nullable: false },
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/services/metadata.js:14:15
+-       abstract: { type: 'string', nullable: true },
++       abstract: {},
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:14:23
+-       abstract: { type: 'string', nullable: true },
++       abstract: { type: "", nullable: true },
+Ran all tests for this mutant.
+
+[Survived] BooleanLiteral
+src/services/metadata.js:14:43
+-       abstract: { type: 'string', nullable: true },
++       abstract: { type: 'string', nullable: false },
+Ran all tests for this mutant.
+
+[Survived] ArrayDeclaration
+src/services/metadata.js:16:13
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
++     required: [],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:16:14
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
++     required: ["", 'authors', 'year', 'year_evidence', 'abstract'],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:16:23
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
++     required: ['title', "", 'year', 'year_evidence', 'abstract'],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:16:34
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
++     required: ['title', 'authors', "", 'year_evidence', 'abstract'],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:16:42
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
++     required: ['title', 'authors', 'year', "", 'abstract'],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:16:59
+-     required: ['title', 'authors', 'year', 'year_evidence', 'abstract'],
++     required: ['title', 'authors', 'year', 'year_evidence', ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/services/metadata.js:19:16
+-   const PROMPT = `You extract bibliographic metadata from the text of the first pages of a research paper.
+-   The text was extracted from a PDF, so it may contain broken lines, hyphenated words, footnote markers and page furniture.
+-   Return:
+-   - title: the paper's title exactly as written (fix only line breaks). Not a header, notice or venue name.
+-   - authors: the author names in order, as written. Names only: no affiliations, emails, footnote symbols or markers like * or †.
+-   - year: the year the paper was published, from the paper itself: a venue line (e.g. "NeurIPS 2017"), a copyright line, a date, or an arXiv stamp such as "arXiv:1706.03762v7 [cs.CL] 2 Aug 2023". Prefer the venue/copyright year over an arXiv stamp. Never use years that only appear in citations or references.
+-   - year_evidence: the short exact snippet from the text that the year was taken from.
+-   - abstract: the full abstract, copied word for word. Only re-join words hyphenated across line breaks and remove line breaks. Do not summarize, shorten or rephrase.
+-   Use null (or an empty author list) for anything that is not clearly stated in the text. Never guess or use outside knowledge.
+-   PAPER TEXT:
+-   """
+-   `;
++   const PROMPT = ``;
+Ran all tests for this mutant.
+
+[Survived] OptionalChaining
+src/services/pdf.js:25:9
+-       if (err?.name === 'PasswordException') throw new PdfError('PDF is password-protected');
++       if (err.name === 'PasswordException') throw new PdfError('PDF is password-protected');
+Tests ran:
+    POST /api/papers/upload rejects a corrupted PDF with 422
+    AI routes on a saved result maps an unreadable downloaded PDF to 422 with a clear message
+    extractPdfText reports a password-protected PDF
+
+
+[Survived] ObjectLiteral
+src/services/pdf.js:30:57
+-       const { totalPages, text } = await extractText(pdf, { mergePages: false });
++       const { totalPages, text } = await extractText(pdf, {});
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload rejects a PDF with no text layer (e.g. a scan) with 422
+  and 15 more tests!
+
+
+[Survived] MethodExpression
+src/services/pdf.js:31:35
+-       const pages = text.map((t) => t.trim());
++       const pages = text.map((t) => t);
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload rejects a PDF with no text layer (e.g. a scan) with 422
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/services/pdf.js:32:32
+-       const letters = pages.join('').replace(/\s/g, '').length;
++       const letters = pages.join("Stryker was here!").replace(/\s/g, '').length;
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload rejects a PDF with no text layer (e.g. a scan) with 422
+  and 14 more tests!
+
+
+[Survived] BlockStatement
+src/services/pdf.js:40:13
+-     } finally {
+-       // Free pdf.js resources; cleanup must never mask the real result.
+-       await pdf.loadingTask?.destroy().catch(() => {});
+-     }
++     } finally {}
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload rejects a PDF with no text layer (e.g. a scan) with 422
+  and 15 more tests!
+
+
+[Survived] OptionalChaining
+src/services/pdf.js:42:11
+-       await pdf.loadingTask?.destroy().catch(() => {});
++       await pdf.loadingTask.destroy().catch(() => {});
+Tests ran:
+    POST /api/papers/upload stores an uploaded PDF with verified metadata and full text
+    POST /api/papers/upload discards hallucinated metadata that is not in the PDF
+    POST /api/papers/upload rejects a PDF with no text layer (e.g. a scan) with 422
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/app.js:12:31
+-   app.use(express.json({ limit: '1mb' }));
++   app.use(express.json({ limit: "" }));
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/app.js:12:22
+-   app.use(express.json({ limit: '1mb' }));
++   app.use(express.json({}));
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/app.js:23:9
+-   app.use('/api', (req, res) => {
++   app.use("", (req, res) => {
+Ran all tests for this mutant.
+
+[NoCoverage] StringLiteral
+src/db.js:9:86
+-   export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../data'));
++   export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, ""));
+
+[NoCoverage] StringLiteral
+src/db.js:10:60
+-   const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
++   const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, "");
+
+[Survived] EqualityOperator
+src/db.js:104:10
+-     return stmts.setFullText.run(fullText, id).changes > 0;
++     return stmts.setFullText.run(fullText, id).changes >= 0;
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+    AI routes on a saved result summary reports content_source "downloaded" on first use
+
+
+[Survived] EqualityOperator
+src/db.js:104:10
+-     return stmts.setFullText.run(fullText, id).changes > 0;
++     return stmts.setFullText.run(fullText, id).changes <= 0;
+Tests ran:
+    getPaperWithText: downloading a saved result downloads the PDF once, stores the text, then reuses it
+    getPaperWithText: downloading a saved result accepts a redirect between arXiv hosts
+    AI routes on a saved result summary reports content_source "downloaded" on first use
+
+
+[Survived] EqualityOperator
+src/db.js:108:10
+-     return stmts.remove.run(id).changes > 0;
++     return stmts.remove.run(id).changes >= 0;
+Tests ran:
+    paper library CRUD deletes a paper (204) and then reports 404
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+    paper library CRUD never deletes files outside the data directory
+
+
+[Survived] EqualityOperator
+src/db.js:108:10
+-     return stmts.remove.run(id).changes > 0;
++     return stmts.remove.run(id).changes <= 0;
+Tests ran:
+    paper library CRUD deletes a paper (204) and then reports 404
+    paper library CRUD deleting an uploaded paper also deletes its PDF file
+    paper library CRUD never deletes files outside the data directory
+
+
+[Survived] ConditionalExpression
+src/db.js:9:38
+-   export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../data'));
++   export const DATA_DIR = path.resolve(true);
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/db.js:9:38
+-   export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../data'));
++   export const DATA_DIR = path.resolve(false);
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/db.js:10:17
+-   const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
++   const DB_PATH = true;
+Ran all tests for this mutant.
+
+[Survived] ConditionalExpression
+src/db.js:10:17
+-   const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
++   const DB_PATH = false;
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/db.js:12:37
+-   fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
++   fs.mkdirSync(path.dirname(DB_PATH), {});
+Ran all tests for this mutant.
+
+[Survived] BooleanLiteral
+src/db.js:12:50
+-   fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
++   fs.mkdirSync(path.dirname(DB_PATH), { recursive: false });
+Ran all tests for this mutant.
+
+[Survived] LogicalOperator
+src/db.js:10:17
+-   const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
++   const DB_PATH = process.env.DB_PATH && path.join(DATA_DIR, 'papers.db');
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/db.js:20:9
+-   db.exec(`
+-     CREATE TABLE IF NOT EXISTS papers (
+-       id          INTEGER PRIMARY KEY AUTOINCREMENT,
+-       title       TEXT    NOT NULL,
+-       authors     TEXT    NOT NULL DEFAULT '[]',  -- JSON array of names
+-       year        INTEGER,
+-       abstract    TEXT,
+-       url         TEXT,                           -- landing page link
+-       pdf_url     TEXT,                           -- remote PDF link, if known
+-       source      TEXT    NOT NULL CHECK (source IN ('search', 'upload')),
+-       external_id TEXT UNIQUE,                    -- e.g. arXiv id; prevents duplicate saves
+-       pdf_path    TEXT,                           -- local file for uploaded PDFs
+-       full_text   TEXT,
+-       created_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+-     )
+-   `);
++   db.exec(``);
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/db.js:39:24
+-   const PUBLIC_COLUMNS = `
+-     id, title, authors, year, abstract, url, pdf_url, source, external_id,
+-     pdf_path IS NOT NULL AS has_pdf,
+-     full_text IS NOT NULL AND length(full_text) > 0 AS has_full_text,
+-     created_at
+-   `;
++   const PUBLIC_COLUMNS = ``;
+Ran all tests for this mutant.
+
+[Survived] ArrayDeclaration
+src/db.js:89:46
+-       authors: JSON.stringify(paper.authors ?? []),
++       authors: JSON.stringify(paper.authors ?? ["Stryker was here"]),
+Ran all tests for this mutant.
+
+Ran 22.63 tests per mutant on average.
+--------------|------------------|----------|-----------|------------|----------|----------|
+              | % Mutation score |          |           |            |          |          |
+File          |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+--------------|--------|---------|----------|-----------|------------|----------|----------|
+All files     |  82.36 |   83.18 |      995 |         9 |        203 |       12 |        0 |
+ routes       |  90.06 |   91.06 |      326 |         0 |         32 |        4 |        0 |
+  ai.js       |  90.20 |   90.20 |       46 |         0 |          5 |        0 |        0 |
+  papers.js   |  91.71 |   92.22 |      166 |         0 |         14 |        1 |        0 |
+  search.js   |  88.57 |   88.57 |       31 |         0 |          4 |        0 |        0 |
+  upload.js   |  87.37 |   90.22 |       83 |         0 |          9 |        3 |        0 |
+ services     |  79.35 |   79.97 |      606 |         9 |        154 |        6 |        0 |
+  arxiv.js    |  73.08 |   73.89 |      133 |         0 |         47 |        2 |        0 |
+  content.js  |  87.34 |   87.34 |       69 |         0 |         10 |        0 |        0 |
+  context.js  |  88.46 |   89.32 |       84 |         8 |         11 |        1 |        0 |
+  gemini.js   |  78.71 |   79.74 |      121 |         1 |         31 |        2 |        0 |
+  llm.js      |  83.87 |   83.87 |       78 |         0 |         15 |        0 |        0 |
+  metadata.js |  67.89 |   68.52 |       74 |         0 |         34 |        1 |        0 |
+  pdf.js      |  82.35 |   82.35 |       28 |         0 |          6 |        0 |        0 |
+  text.js     | 100.00 |  100.00 |       19 |         0 |          0 |        0 |        0 |
+ app.js       |  90.32 |   90.32 |       28 |         0 |          3 |        0 |        0 |
+ db.js        |  68.63 |   71.43 |       35 |         0 |         14 |        2 |        0 |
+--------------|--------|---------|----------|-----------|------------|----------|----------|
+22:12:17 (40809) INFO JsonReporter Your report can be found at: file:///Users/yashtembhurnikar/Files/Purdue/CS%2059300ASE/Homework/research-assistant/server/reports/mutation/mutation.json
+22:12:17 (40809) INFO HtmlReporter Your report can be found at: file:///Users/yashtembhurnikar/Files/Purdue/CS%2059300ASE/Homework/research-assistant/server/reports/mutation/mutation.html
+22:12:17 (40809) INFO MutationTestExecutor Done in 4 minutes 37 seconds.

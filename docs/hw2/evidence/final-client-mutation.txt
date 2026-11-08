@@ -1,0 +1,1989 @@
+22:13:08 (45218) INFO ProjectReader Found 8 of 34 file(s) to be mutated.
+22:13:09 (45218) INFO Instrumenter Instrumented 8 source file(s) with 851 mutant(s)
+22:13:09 (45218) INFO ConcurrencyTokenProvider Creating 4 test runner process(es).
+22:13:09 (45218) INFO BroadcastReporter Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+22:13:09 (45218) INFO DryRunExecutor Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+22:13:14 (45218) INFO DryRunExecutor Initial test run succeeded. Ran 71 tests in 4 seconds (net 1593.2704980000015 ms, overhead 2707.7295019999983 ms).
+Mutation testing 1% (elapsed: <1m, remaining: ~8m) 62/851 tested (16 survived, 0 timed out)
+Mutation testing 4% (elapsed: <1m, remaining: ~6m) 98/851 tested (21 survived, 0 timed out)
+Mutation testing 12% (elapsed: <1m, remaining: ~3m) 150/851 tested (22 survived, 0 timed out)
+Mutation testing 23% (elapsed: <1m, remaining: ~2m) 199/851 tested (27 survived, 0 timed out)
+Mutation testing 28% (elapsed: <1m, remaining: ~2m) 220/851 tested (33 survived, 0 timed out)
+Mutation testing 30% (elapsed: ~1m, remaining: ~2m) 262/851 tested (40 survived, 0 timed out)
+Mutation testing 31% (elapsed: ~1m, remaining: ~2m) 301/851 tested (50 survived, 0 timed out)
+Mutation testing 34% (elapsed: ~1m, remaining: ~2m) 337/851 tested (55 survived, 0 timed out)
+Mutation testing 38% (elapsed: ~1m, remaining: ~2m) 377/851 tested (64 survived, 0 timed out)
+Mutation testing 41% (elapsed: ~1m, remaining: ~2m) 425/851 tested (76 survived, 0 timed out)
+Mutation testing 45% (elapsed: ~1m, remaining: ~2m) 464/851 tested (84 survived, 0 timed out)
+Mutation testing 48% (elapsed: ~2m, remaining: ~2m) 503/851 tested (94 survived, 0 timed out)
+Mutation testing 54% (elapsed: ~2m, remaining: ~1m) 547/851 tested (106 survived, 0 timed out)
+Mutation testing 57% (elapsed: ~2m, remaining: ~1m) 585/851 tested (110 survived, 0 timed out)
+Mutation testing 63% (elapsed: ~2m, remaining: ~1m) 622/851 tested (121 survived, 0 timed out)
+Mutation testing 68% (elapsed: ~2m, remaining: ~1m) 659/851 tested (130 survived, 0 timed out)
+Mutation testing 71% (elapsed: ~2m, remaining: ~1m) 716/851 tested (147 survived, 0 timed out)
+Mutation testing 73% (elapsed: ~3m, remaining: ~1m) 771/851 tested (161 survived, 0 timed out)
+Mutation testing 78% (elapsed: ~3m, remaining: <1m) 803/851 tested (166 survived, 0 timed out)
+Mutation testing 84% (elapsed: ~3m, remaining: <1m) 817/851 tested (173 survived, 0 timed out)
+Mutation testing 97% (elapsed: ~3m, remaining: <1m) 845/851 tested (173 survived, 0 timed out)
+
+All tests
+  api.test.js
+    ✓ api client returns the parsed JSON body on success (killed 5)
+    ✓ api client URL-encodes search queries (killed 1)
+    ✓ api client sends JSON bodies with a JSON content type (killed 6)
+    ✓ api client sends uploads as multipart FormData without forcing a content type (killed 4)
+    ✓ api client builds the right endpoints for each call (killed 3)
+    ✓ api client returns null for 204 No Content (killed 1)
+    ✓ api client uses the server's error message and status (killed 3)
+    ✓ api client reports an unreachable backend (network error) (killed 2)
+    ✓ api client reports a non-JSON 5xx (dev proxy error page) as an unreachable backend (killed 4)
+    ✓ api client reports a non-JSON 4xx with its status (killed 2)
+    ✓ api client rejects a successful response that is not JSON (killed 3)
+  App.test.jsx
+    ✓ App navigation starts on Search by default (killed 24)
+    ✓ App navigation switches pages from the URL hash and marks the current link (killed 26)
+    ✓ App navigation opens a paper from #/paper/:id and highlights My Library (killed 27)
+    ~ App navigation falls back to Search for #/nonsense (covered 153)
+    ✓ App navigation falls back to Search for #/paper/abc (killed 1)
+    ~ App navigation falls back to Search for #/paper/ (covered 158)
+    ✓ App navigation keeps search results when switching tabs and back (killed 5)
+    ✓ App navigation skip link moves focus to the main content without changing the page (killed 2)
+  LibraryPage.test.jsx
+    ✓ LibraryPage shows a loading state, then every paper with its content label and actions (killed 31)
+    ✓ LibraryPage uses the singular for one paper (killed 2)
+    ✓ LibraryPage explains an empty library (killed 6)
+    ✓ LibraryPage shows an error when the library cannot be loaded (killed 8)
+    ✓ LibraryPage deletes a paper after confirmation (killed 26)
+    ~ LibraryPage does nothing when the user cancels the confirmation (covered 149)
+    ✓ LibraryPage removes the paper when the server says it is already gone (404) (killed 2)
+    ✓ LibraryPage keeps the paper and shows an error when deletion fails (killed 9)
+  PaperCard.test.jsx
+    ✓ PaperCard shows title, authors, year, source badge and external links (killed 19)
+    ✓ PaperCard labels search results and uploads by source (killed 1)
+    ✓ PaperCard shows placeholders for missing metadata and omits the footer when there is nothing to show (killed 6)
+    ✓ PaperCard collapses long author lists and expands them on request (killed 9)
+    ✓ PaperCard shows exactly six authors without a "more" button (killed 2)
+    ✓ PaperCard previews a long abstract at a word boundary and toggles it (killed 18)
+    ✓ PaperCard shows short abstracts in full without a toggle, and can start expanded (killed 1)
+    ~ PaperCard [BUG-2] shortens a long abstract that has no spaces near the start (covered 57)
+    ✓ contentLabel {"has_full_text":true,"pdf_url":"x"} -> Full text available (killed 1)
+    ~ contentLabel {"has_full_text":false,"pdf_url":"https://arxiv.org/pdf/1"} -> Full text fetched on first use (covered 6)
+    ✓ contentLabel {"has_full_text":false,"pdf_url":null} -> Metadata only (killed 2)
+  PaperPage.test.jsx
+    ✓ PaperPage: loading shows the paper with its abstract expanded (killed 29)
+    ✓ PaperPage: loading explains a missing paper (404) (killed 14)
+    ✓ PaperPage: loading explains a missing paper (400) (killed 2)
+    ✓ PaperPage: loading shows other load errors as they are (killed 1)
+    ✓ PaperPage: summary generates and shows every summary section (killed 54)
+    ✓ PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge (killed 11)
+    ✓ PaperPage: summary notes when only part of a long paper was used (killed 4)
+    ✓ PaperPage: summary shows an error when the summary fails (killed 12)
+    ✓ PaperPage: questions asks for a question instead of sending a blank one (killed 14)
+    ✓ PaperPage: questions answers with evidence quotes, submitting with Enter (killed 40)
+    ~ PaperPage: questions Shift+Enter adds a new line instead of submitting (covered 185)
+    ✓ PaperPage: questions says clearly when the paper does not cover the question (killed 4)
+    ✓ PaperPage: questions shows the grounding warning when no quote could be verified (killed 2)
+    ✓ PaperPage: questions example questions fill the box without sending (killed 4)
+    ✓ PaperPage: questions shows an error for a failed question and keeps the typed question (killed 7)
+    ✓ PaperPage: questions remembers the last summary and answer when the paper is reopened (killed 4)
+  SearchPage.test.jsx
+    ✓ SearchPage asks for keywords instead of searching when the box is blank (killed 18)
+    ✓ SearchPage shows a loading message, then the results with a count (killed 33)
+    ✓ SearchPage tells the user when nothing was found (killed 6)
+    ✓ SearchPage shows the server error when the search fails (killed 11)
+    ✓ SearchPage saves a result to the library and marks it saved (killed 34)
+    ✓ SearchPage treats "already in your library" (409) as saved (killed 7)
+    ✓ SearchPage shows a save error on the card and lets the user retry (killed 4)
+    ✓ SearchPage marks results that are already in the library (killed 9)
+    ~ SearchPage still works when the library cannot be loaded (covered 183)
+    ~ SearchPage ignores the response of an older search that arrives late (covered 185)
+  UploadPage.test.jsx
+    ✓ UploadPage disables Upload until a file is chosen, then shows the file name and size (killed 23)
+    ✓ UploadPage rejects a non-PDF before uploading (killed 15)
+    ✓ UploadPage rejects a PDF over 20 MB before uploading (killed 5)
+    ✓ UploadPage accepts a file with a .PDF extension but no MIME type (killed 7)
+    ✓ UploadPage uploads, shows progress, then the new paper with a link to open it (killed 30)
+    ✓ UploadPage lists metadata warnings returned by the server (killed 3)
+    ✓ UploadPage shows the server error when the upload fails (killed 2)
+
+[Survived] StringLiteral
+src/components/PaperCard.jsx:18:43
+-         {authors.slice(0, MAX_AUTHORS).join(', ')}{' '}
++         {authors.slice(0, MAX_AUTHORS).join("")}{' '}
+Tests ran:
+    PaperCard collapses long author lists and expands them on request
+
+
+[Survived] StringLiteral
+src/components/PaperCard.jsx:18:50
+-         {authors.slice(0, MAX_AUTHORS).join(', ')}{' '}
++         {authors.slice(0, MAX_AUTHORS).join(', ')}{""}
+Tests ran:
+    PaperCard collapses long author lists and expands them on request
+
+
+[Survived] OptionalChaining
+src/components/PaperCard.jsx:14:8
+-     if (!authors?.length) return <span className="muted">Unknown authors</span>;
++     if (!authors.length) return <span className="muted">Unknown authors</span>;
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 35 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/PaperCard.jsx:48:53
+-   export default function PaperCard({ paper, badges = [], actions, expandAbstract = false, children }) {
++   export default function PaperCard({ paper, badges = ["Stryker was here"], actions, expandAbstract = false, children }) {
+Tests ran:
+    PaperCard labels search results and uploads by source
+    PaperCard shows placeholders for missing metadata and omits the footer when there is nothing to show
+    PaperCard collapses long author lists and expands them on request
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/components/PaperCard.jsx:31:16
+-     const long = text.length > ABSTRACT_PREVIEW_CHARS;
++     const long = text.length >= ABSTRACT_PREVIEW_CHARS;
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 34 more tests!
+
+
+[Survived] MethodExpression
+src/components/PaperCard.jsx:60:12
+-             {[SOURCE_LABELS[paper.source ?? paper.provider], ...badges].filter(Boolean).map((b) => (
++             {[SOURCE_LABELS[paper.source ?? paper.provider], ...badges].map((b) => (
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 35 more tests!
+
+
+[Survived] LogicalOperator
+src/components/PaperCard.jsx:68:9
+-         {(paper.url || paper.pdf_url || actions) && (
++         {(paper.url && paper.pdf_url || actions) && (
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 35 more tests!
+
+
+[Survived] LogicalOperator
+src/components/PaperCard.jsx:82:12
+-             {actions && <div className="paper-actions">{actions}</div>}
++             {actions || <div className="paper-actions">{actions}</div>}
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 34 more tests!
+
+
+[Survived] ArrayDeclaration
+src/pages/LibraryPage.jsx:7:40
+-     const [papers, setPapers] = useState([]);
++     const [papers, setPapers] = useState(["Stryker was here"]);
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/pages/LibraryPage.jsx:9:38
+-     const [error, setError] = useState('');
++     const [error, setError] = useState("Stryker was here!");
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/pages/LibraryPage.jsx:12:40
+-     const [notice, setNotice] = useState('');
++     const [notice, setNotice] = useState("Stryker was here!");
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:20:13
+-           if (cancelled) return;
++           if (false) return;
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:25:13
+-           if (cancelled) return;
++           if (false) return;
+Tests ran:
+    LibraryPage shows an error when the library cannot be loaded
+
+
+[Survived] BlockStatement
+src/pages/LibraryPage.jsx:29:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/pages/LibraryPage.jsx:30:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ArrayDeclaration
+src/pages/LibraryPage.jsx:32:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ObjectLiteral
+src/pages/LibraryPage.jsx:37:28
+-       setDeleteError((e) => ({ ...e, [paper.id]: undefined }));
++       setDeleteError((e) => ({}));
+Tests ran:
+    LibraryPage deletes a paper after confirmation
+    LibraryPage removes the paper when the server says it is already gone (404)
+    LibraryPage keeps the paper and shows an error when deletion fails
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:62:8
+-         {status === 'loading' && <p className="status">Loading your library…</p>}
++         {true && <p className="status">Loading your library…</p>}
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:68:8
+-         {status === 'done' && papers.length === 0 && (
++         {true && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/LibraryPage.jsx:68:8
+-         {status === 'done' && papers.length === 0 && (
++         {status === 'done' || papers.length === 0 && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:68:8
+-         {status === 'done' && papers.length === 0 && (
++         {true && papers.length === 0 && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:68:29
+-         {status === 'done' && papers.length === 0 && (
++         {status === 'done' && true && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:71:8
+-         {status === 'done' && papers.length > 0 && (
++         {true && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/LibraryPage.jsx:71:8
+-         {status === 'done' && papers.length > 0 && (
++         {status === 'done' || papers.length > 0 && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:71:8
+-         {status === 'done' && papers.length > 0 && (
++         {true && papers.length > 0 && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:71:29
+-         {status === 'done' && papers.length > 0 && (
++         {status === 'done' && true && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 6 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/LibraryPage.jsx:71:29
+-         {status === 'done' && papers.length > 0 && (
++         {status === 'done' && papers.length >= 0 && (
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage explains an empty library
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/LibraryPage.jsx:91:26
+-                           {deleting === paper.id ? 'Deleting…' : 'Delete'}
++                           {true ? 'Deleting…' : 'Delete'}
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage deletes a paper after confirmation
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/pages/LibraryPage.jsx:91:64
+-                           {deleting === paper.id ? 'Deleting…' : 'Delete'}
++                           {deleting === paper.id ? 'Deleting…' : ""}
+Tests ran:
+    LibraryPage shows a loading state, then every paper with its content label and actions
+    LibraryPage uses the singular for one paper
+    LibraryPage deletes a paper after confirmation
+  and 3 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/PaperPage.jsx:30:8
+-     if (!context?.truncated) return null;
++     if (!context.truncated) return null;
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 4 more tests!
+
+
+[Survived] ObjectLiteral
+src/pages/PaperPage.jsx:39:129
+-     const [state, setState] = useState(() => (summaryCache.has(paper.id) ? { status: 'done', data: summaryCache.get(paper.id) } : { status: 'idle' }));
++     const [state, setState] = useState(() => (summaryCache.has(paper.id) ? { status: 'done', data: summaryCache.get(paper.id) } : {}));
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:39:139
+-     const [state, setState] = useState(() => (summaryCache.has(paper.id) ? { status: 'done', data: summaryCache.get(paper.id) } : { status: 'idle' }));
++     const [state, setState] = useState(() => (summaryCache.has(paper.id) ? { status: 'done', data: summaryCache.get(paper.id) } : { status: "" }));
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:48:11
+-         if (data.content_source === 'downloaded') onContentFetched();
++         if (true) onContentFetched();
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:67:61
+-               <span className="spinner" aria-hidden="true" />{' '}
++               <span className="spinner" aria-hidden="true" />{""}
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:81:41
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={``}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:81:56
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={`summary-item${true ? ' tldr' : ''}`}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:81:56
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={`summary-item${false ? ' tldr' : ''}`}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/pages/PaperPage.jsx:81:56
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={`summary-item${key !== 'tldr' ? ' tldr' : ''}`}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:81:64
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={`summary-item${key === "" ? ' tldr' : ''}`}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:81:73
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={`summary-item${key === 'tldr' ? "" : ''}`}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:81:83
+-                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : ''}`}>
++                 <div key={key} className={`summary-item${key === 'tldr' ? ' tldr' : "Stryker was here!"}`}>
+Tests ran:
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+    PaperPage: summary notes when only part of a long paper was used
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:96:48
+-     const [inputError, setInputError] = useState('');
++     const [inputError, setInputError] = useState("Stryker was here!");
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] ObjectLiteral
+src/pages/PaperPage.jsx:97:127
+-     const [state, setState] = useState(() => (answerCache.has(paper.id) ? { status: 'done', data: answerCache.get(paper.id) } : { status: 'idle' }));
++     const [state, setState] = useState(() => (answerCache.has(paper.id) ? { status: 'done', data: answerCache.get(paper.id) } : {}));
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:97:137
+-     const [state, setState] = useState(() => (answerCache.has(paper.id) ? { status: 'done', data: answerCache.get(paper.id) } : { status: 'idle' }));
++     const [state, setState] = useState(() => (answerCache.has(paper.id) ? { status: 'done', data: answerCache.get(paper.id) } : { status: "" }));
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/PaperPage.jsx:103:5
+-       event?.preventDefault();
++       event.preventDefault();
+Tests ran:
+    PaperPage: questions asks for a question instead of sending a blank one
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:104:9
+-       if (busy) return;
++       if (false) return;
+Tests ran:
+    PaperPage: questions asks for a question instead of sending a blank one
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+  and 3 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/PaperPage.jsx:108:7
+-         inputRef.current?.focus();
++         inputRef.current.focus();
+Tests ran:
+    PaperPage: questions asks for a question instead of sending a blank one
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:111:19
+-       setInputError('');
++       setInputError("Stryker was here!");
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:117:11
+-         if (data.content_source === 'downloaded') onContentFetched();
++         if (true) onContentFetched();
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:117:11
+-         if (data.content_source === 'downloaded') onContentFetched();
++         if (false) onContentFetched();
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/pages/PaperPage.jsx:117:11
+-         if (data.content_source === 'downloaded') onContentFetched();
++         if (data.content_source !== 'downloaded') onContentFetched();
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:117:35
+-         if (data.content_source === 'downloaded') onContentFetched();
++         if (data.content_source === "") onContentFetched();
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:128:18
+-     const answer = state.status === 'done' ? state.data : null;
++     const answer = true ? state.data : null;
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:148:54
+-             aria-describedby={`${hintId}${inputError ? ' question-error' : ''}`}
++             aria-describedby={`${hintId}${inputError ? "" : ''}`}
+Tests ran:
+    PaperPage: questions asks for a question instead of sending a blank one
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:148:29
+-             aria-describedby={`${hintId}${inputError ? ' question-error' : ''}`}
++             aria-describedby={``}
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:148:74
+-             aria-describedby={`${hintId}${inputError ? ' question-error' : ''}`}
++             aria-describedby={`${hintId}${inputError ? ' question-error' : "Stryker was here!"}`}
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:158:21
+-               {busy ? 'Asking…' : 'Ask'}
++               {busy ? "" : 'Ask'}
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 2 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/PaperPage.jsx:151:10
+-           {inputError && (
+-             <p id="question-error" className="field-error">
+-               {inputError}
+-             </p>
+-           )}
++           {inputError || <p id="question-error" className="field-error">
++               {inputError}
++             </p>}
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:175:35
+-                       setInputError('');
++                       setInputError("Stryker was here!");
+Tests ran:
+    PaperPage: questions example questions fill the box without sending
+
+
+[Survived] OptionalChaining
+src/pages/PaperPage.jsx:176:21
+-                       inputRef.current?.focus();
++                       inputRef.current.focus();
+Tests ran:
+    PaperPage: questions example questions fill the box without sending
+
+
+[Survived] LogicalOperator
+src/pages/PaperPage.jsx:211:12
+-             {answer.warning && <p className="notice warning">{answer.warning}</p>}
++             {answer.warning || <p className="notice warning">{answer.warning}</p>}
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 1 more test!
+
+
+[Survived] OptionalChaining
+src/pages/PaperPage.jsx:212:12
+-             {answer.evidence?.length > 0 && (
++             {answer.evidence.length > 0 && (
+Tests ran:
+    PaperPage: questions answers with evidence quotes, submitting with Enter
+    PaperPage: questions says clearly when the paper does not cover the question
+    PaperPage: questions shows the grounding warning when no quote could be verified
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:233:40
+-     const [status, setStatus] = useState('loading');
++     const [status, setStatus] = useState("");
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:234:38
+-     const [error, setError] = useState('');
++     const [error, setError] = useState("Stryker was here!");
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:242:13
+-           if (cancelled) return;
++           if (false) return;
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:247:13
+-           if (cancelled) return;
++           if (false) return;
+Tests ran:
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+    PaperPage: loading shows other load errors as they are
+
+
+[Survived] BlockStatement
+src/pages/PaperPage.jsx:251:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] BooleanLiteral
+src/pages/PaperPage.jsx:252:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] ArrayDeclaration
+src/pages/PaperPage.jsx:254:6
+-     }, [id]);
++     }, []);
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:264:31
+-         <h2 id="paper-heading">{status === 'done' ? 'Paper assistant' : 'Paper'}</h2>
++         <h2 id="paper-heading">{true ? 'Paper assistant' : 'Paper'}</h2>
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/PaperPage.jsx:264:31
+-         <h2 id="paper-heading">{status === 'done' ? 'Paper assistant' : 'Paper'}</h2>
++         <h2 id="paper-heading">{status !== 'done' ? 'Paper assistant' : 'Paper'}</h2>
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:264:71
+-         <h2 id="paper-heading">{status === 'done' ? 'Paper assistant' : 'Paper'}</h2>
++         <h2 id="paper-heading">{status === 'done' ? 'Paper assistant' : ""}</h2>
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/PaperPage.jsx:266:8
+-         {status === 'loading' && <p className="status">Loading paper…</p>}
++         {true && <p className="status">Loading paper…</p>}
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: loading explains a missing paper (404)
+    PaperPage: loading explains a missing paper (400)
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:275:32
+-             <SummarySection key={`s${paper.id}`} paper={paper} onContentFetched={markContentFetched} />
++             <SummarySection key={``} paper={paper} onContentFetched={markContentFetched} />
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:276:33
+-             <QuestionSection key={`q${paper.id}`} paper={paper} onContentFetched={markContentFetched} />
++             <QuestionSection key={``} paper={paper} onContentFetched={markContentFetched} />
+Tests ran:
+    PaperPage: loading shows the paper with its abstract expanded
+    PaperPage: summary generates and shows every summary section
+    PaperPage: summary warns that downloading is slower when there is no full text yet, then updates the badge
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:22:3
+-     'What problem does this paper address?',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:23:3
+-     'What is the main idea of the proposed approach?',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:24:3
+-     'What datasets are used?',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/pages/PaperPage.jsx:26:3
+-     'How does this method compare with the baselines?',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/pages/SearchPage.jsx:8:48
+-     const [inputError, setInputError] = useState('');
++     const [inputError, setInputError] = useState("Stryker was here!");
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] MethodExpression
+src/pages/SearchPage.jsx:22:42
+-           const saved = Object.fromEntries(papers.filter((p) => p.external_id).map((p) => [p.external_id, 'saved']));
++           const saved = Object.fromEntries(papers.map((p) => [p.external_id, 'saved']));
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:21:13
+-           if (cancelled) return;
++           if (false) return;
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/pages/SearchPage.jsx:26:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] BooleanLiteral
+src/pages/SearchPage.jsx:27:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ArrayDeclaration
+src/pages/SearchPage.jsx:29:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/SearchPage.jsx:36:7
+-         inputRef.current?.focus();
++         inputRef.current.focus();
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+
+
+[Survived] StringLiteral
+src/pages/SearchPage.jsx:39:19
+-       setInputError('');
++       setInputError("Stryker was here!");
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage shows the server error when the search fails
+  and 7 more tests!
+
+
+[Survived] UpdateOperator
+src/pages/SearchPage.jsx:42:23
+-       const requestId = ++latestRequest.current;
++       const requestId = --latestRequest.current;
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage shows the server error when the search fails
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:46:11
+-         if (requestId !== latestRequest.current) return;
++         if (false) return;
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage saves a result to the library and marks it saved
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:49:11
+-         if (requestId !== latestRequest.current) return;
++         if (false) return;
+Tests ran:
+    SearchPage shows the server error when the search fails
+
+
+[Survived] ArrayDeclaration
+src/pages/SearchPage.jsx:50:79
+-         setSearch((s) => ({ ...s, status: 'error', error: err.message, results: [] }));
++         setSearch((s) => ({ ...s, status: 'error', error: err.message, results: ["Stryker was here"] }));
+Tests ran:
+    SearchPage shows the server error when the search fails
+
+
+[Survived] StringLiteral
+src/pages/SearchPage.jsx:84:44
+-               aria-describedby={inputError ? 'search-input-error' : undefined}
++               aria-describedby={inputError ? "" : undefined}
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+
+
+[Survived] LogicalOperator
+src/pages/SearchPage.jsx:91:10
+-           {inputError && (
+-             <p id="search-input-error" className="field-error">
+-               {inputError}
+-             </p>
+-           )}
++           {inputError || <p id="search-input-error" className="field-error">
++               {inputError}
++             </p>}
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:99:10
+-           {status === 'loading' && <p className="status">Searching arXiv for “{submitted}”…</p>}
++           {true && <p className="status">Searching arXiv for “{submitted}”…</p>}
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:100:10
+-           {status === 'done' && results.length === 0 && (
++           {true && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/SearchPage.jsx:100:10
+-           {status === 'done' && results.length === 0 && (
++           {status === 'done' || results.length === 0 && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:100:10
+-           {status === 'done' && results.length === 0 && (
++           {true && results.length === 0 && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:100:31
+-           {status === 'done' && results.length === 0 && (
++           {status === 'done' && true && (
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage saves a result to the library and marks it saved
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:103:10
+-           {status === 'done' && results.length > 0 && (
++           {true && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/SearchPage.jsx:103:10
+-           {status === 'done' && results.length > 0 && (
++           {status === 'done' || results.length > 0 && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:103:10
+-           {status === 'done' && results.length > 0 && (
++           {true && results.length > 0 && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:103:31
+-           {status === 'done' && results.length > 0 && (
++           {status === 'done' && true && (
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage saves a result to the library and marks it saved
+  and 6 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/SearchPage.jsx:103:31
+-           {status === 'done' && results.length > 0 && (
++           {status === 'done' && results.length >= 0 && (
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage saves a result to the library and marks it saved
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:115:8
+-         {status === 'done' && results.length > 0 && (
++         {true && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/SearchPage.jsx:115:8
+-         {status === 'done' && results.length > 0 && (
++         {status === 'done' || results.length > 0 && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:115:8
+-         {status === 'done' && results.length > 0 && (
++         {true && results.length > 0 && (
+Tests ran:
+    SearchPage asks for keywords instead of searching when the box is blank
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+  and 14 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/SearchPage.jsx:115:29
+-         {status === 'done' && results.length > 0 && (
++         {status === 'done' && true && (
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage saves a result to the library and marks it saved
+  and 6 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/SearchPage.jsx:115:29
+-         {status === 'done' && results.length > 0 && (
++         {status === 'done' && results.length >= 0 && (
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage tells the user when nothing was found
+    SearchPage saves a result to the library and marks it saved
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/pages/SearchPage.jsx:128:52
+-                         className={`button ${saved ? 'saved' : 'primary'}`}
++                         className={`button ${saved ? "" : 'primary'}`}
+Tests ran:
+    SearchPage saves a result to the library and marks it saved
+    SearchPage treats "already in your library" (409) as saved
+    SearchPage marks results that are already in the library
+
+
+[Survived] ArrayDeclaration
+src/pages/SearchPage.jsx:124:57
+-                     badges={saved ? ['In your library'] : []}
++                     badges={saved ? ['In your library'] : ["Stryker was here"]}
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage saves a result to the library and marks it saved
+    SearchPage treats "already in your library" (409) as saved
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/pages/SearchPage.jsx:128:34
+-                         className={`button ${saved ? 'saved' : 'primary'}`}
++                         className={``}
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage saves a result to the library and marks it saved
+    SearchPage treats "already in your library" (409) as saved
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/pages/SearchPage.jsx:128:62
+-                         className={`button ${saved ? 'saved' : 'primary'}`}
++                         className={`button ${saved ? 'saved' : ""}`}
+Tests ran:
+    SearchPage shows a loading message, then the results with a count
+    SearchPage saves a result to the library and marks it saved
+    SearchPage treats "already in your library" (409) as saved
+  and 5 more tests!
+
+
+[NoCoverage] StringLiteral
+src/pages/UploadPage.jsx:13:21
+-     if (!file) return 'Choose a PDF file to upload.';
++     if (!file) return "";
+
+[NoCoverage] StringLiteral
+src/pages/UploadPage.jsx:30:43
+-       setError(chosen ? checkFile(chosen) : '');
++       setError(chosen ? checkFile(chosen) : "Stryker was here!");
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:8:10
+-     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
++     return false ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/UploadPage.jsx:8:10
+-     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
++     return bytes <= 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] ArithmeticOperator
+src/pages/UploadPage.jsx:8:18
+-     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
++     return bytes < 1024 / 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:8:32
+-     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
++     return bytes < 1024 * 1024 ? `` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage accepts a file with a .PDF extension but no MIME type
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+  and 2 more tests!
+
+
+[Survived] MethodExpression
+src/pages/UploadPage.jsx:8:35
+-     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
++     return bytes < 1024 * 1024 ? `${Math.min(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage accepts a file with a .PDF extension but no MIME type
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+  and 2 more tests!
+
+
+[Survived] ArithmeticOperator
+src/pages/UploadPage.jsx:8:58
+-     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
++     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes * 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage accepts a file with a .PDF extension but no MIME type
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:13:7
+-     if (!file) return 'Choose a PDF file to upload.';
++     if (false) return 'Choose a PDF file to upload.';
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:14:17
+-     const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
++     const isPdf = false || file.name.toLowerCase().endsWith('.pdf');
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:14:31
+-     const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
++     const isPdf = file.type === "" || file.name.toLowerCase().endsWith('.pdf');
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/UploadPage.jsx:16:7
+-     if (file.size > MAX_MB * 1024 * 1024) return `"${file.name}" is ${formatSize(file.size)}; the limit is ${MAX_MB} MB.`;
++     if (file.size >= MAX_MB * 1024 * 1024) return `"${file.name}" is ${formatSize(file.size)}; the limit is ${MAX_MB} MB.`;
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a PDF over 20 MB before uploading
+    UploadPage accepts a file with a .PDF extension but no MIME type
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:22:40
+-     const [status, setStatus] = useState('idle'); // 'idle' | 'uploading' | 'done' | 'error'
++     const [status, setStatus] = useState(""); // 'idle' | 'uploading' | 'done' | 'error'
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:23:38
+-     const [error, setError] = useState('');
++     const [error, setError] = useState("Stryker was here!");
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/UploadPage.jsx:28:20
+-       const chosen = event.target.files?.[0] ?? null;
++       const chosen = event.target.files[0] ?? null;
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:31:9
+-       if (status !== 'uploading') setStatus('idle');
++       if (true) setStatus('idle');
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:31:9
+-       if (status !== 'uploading') setStatus('idle');
++       if (false) setStatus('idle');
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/pages/UploadPage.jsx:31:9
+-       if (status !== 'uploading') setStatus('idle');
++       if (status === 'uploading') setStatus('idle');
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:31:20
+-       if (status !== 'uploading') setStatus('idle');
++       if (status !== "") setStatus('idle');
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:31:43
+-       if (status !== 'uploading') setStatus('idle');
++       if (status !== 'uploading') setStatus("");
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:36:9
+-       if (status === 'uploading') return;
++       if (false) return;
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:36:20
+-       if (status === 'uploading') return;
++       if (status === "") return;
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:40:17
+-         setStatus('error');
++         setStatus("");
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+
+
+[Survived] OptionalChaining
+src/pages/UploadPage.jsx:41:7
+-         inputRef.current?.focus();
++         inputRef.current.focus();
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:44:14
+-       setError('');
++       setError("Stryker was here!");
+Tests ran:
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+    UploadPage lists metadata warnings returned by the server
+    UploadPage shows the server error when the upload fails
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:52:11
+-         if (inputRef.current) inputRef.current.value = '';
++         if (true) inputRef.current.value = '';
+Tests ran:
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+    UploadPage lists metadata warnings returned by the server
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:55:17
+-         setStatus('error');
++         setStatus("");
+Tests ran:
+    UploadPage shows the server error when the upload fails
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:81:48
+-             aria-describedby={`pdf-hint${error ? ' upload-error' : ''}`}
++             aria-describedby={`pdf-hint${error ? "" : ''}`}
+Tests ran:
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+    UploadPage shows the server error when the upload fails
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:81:29
+-             aria-describedby={`pdf-hint${error ? ' upload-error' : ''}`}
++             aria-describedby={``}
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:81:66
+-             aria-describedby={`pdf-hint${error ? ' upload-error' : ''}`}
++             aria-describedby={`pdf-hint${error ? ' upload-error' : "Stryker was here!"}`}
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/UploadPage.jsx:99:85
+-               <span className="spinner" aria-hidden="true" /> Uploading and reading “{file?.name}”. Extracting the title, authors, year and abstract can take up
++               <span className="spinner" aria-hidden="true" /> Uploading and reading “{file.name}”. Extracting the title, authors, year and abstract can take up
+Tests ran:
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+    UploadPage lists metadata warnings returned by the server
+    UploadPage shows the server error when the upload fails
+
+
+[Survived] LogicalOperator
+src/pages/UploadPage.jsx:103:10
+-           {status === 'done' && uploaded && <p className="notice success">“{uploaded.title}” was added to your library.</p>}
++           {status === 'done' || uploaded && <p className="notice success">“{uploaded.title}” was added to your library.</p>}
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:103:10
+-           {status === 'done' && uploaded && <p className="notice success">“{uploaded.title}” was added to your library.</p>}
++           {true && uploaded && <p className="notice success">“{uploaded.title}” was added to your library.</p>}
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] LogicalOperator
+src/pages/UploadPage.jsx:111:8
+-         {status === 'done' && uploaded && (
++         {status === 'done' || uploaded && (
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/pages/UploadPage.jsx:111:8
+-         {status === 'done' && uploaded && (
++         {true && uploaded && (
+Tests ran:
+    UploadPage disables Upload until a file is chosen, then shows the file name and size
+    UploadPage rejects a non-PDF before uploading
+    UploadPage rejects a PDF over 20 MB before uploading
+  and 5 more tests!
+
+
+[Survived] OptionalChaining
+src/pages/UploadPage.jsx:113:12
+-             {uploaded.warnings?.length > 0 && (
++             {uploaded.warnings.length > 0 && (
+Tests ran:
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+    UploadPage lists metadata warnings returned by the server
+
+
+[Survived] ArrayDeclaration
+src/pages/UploadPage.jsx:130:21
+-               badges={['Full text available']}
++               badges={[]}
+Tests ran:
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+    UploadPage lists metadata warnings returned by the server
+
+
+[Survived] StringLiteral
+src/pages/UploadPage.jsx:130:22
+-               badges={['Full text available']}
++               badges={[""]}
+Tests ran:
+    UploadPage uploads, shows progress, then the new paper with a link to open it
+    UploadPage lists metadata warnings returned by the server
+
+
+[Survived] EqualityOperator
+src/api.js:29:37
+-       const message = body?.error ?? (response.status >= 500 ? 'Cannot reach the server. Is the backend running?' : `Request failed (HTTP ${response.status})`);
++       const message = body?.error ?? (response.status > 500 ? 'Cannot reach the server. Is the backend running?' : `Request failed (HTTP ${response.status})`);
+Tests ran:
+    api client reports a non-JSON 5xx (dev proxy error page) as an unreachable backend
+    api client reports a non-JSON 4xx with its status
+
+
+[NoCoverage] StringLiteral
+src/App.jsx:19:46
+-     if (page === 'paper' && /^\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
++     if (page === 'paper' && /^\d+$/.test(id ?? "Stryker was here!")) return { page: 'paper', id: Number(id) };
+
+[Survived] Regex
+src/App.jsx:18:51
+-     const [page, id] = window.location.hash.replace(/^#\/?/, '').split('/');
++     const [page, id] = window.location.hash.replace(/^#\//, '').split('/');
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] Regex
+src/App.jsx:18:51
+-     const [page, id] = window.location.hash.replace(/^#\/?/, '').split('/');
++     const [page, id] = window.location.hash.replace(/#\/?/, '').split('/');
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.jsx:19:7
+-     if (page === 'paper' && /^\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
++     if (true && /^\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] Regex
+src/App.jsx:19:27
+-     if (page === 'paper' && /^\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
++     if (page === 'paper' && /\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
+Tests ran:
+    App navigation opens a paper from #/paper/:id and highlights My Library
+    App navigation falls back to Search for #/paper/abc
+    App navigation falls back to Search for #/paper/
+
+
+[Survived] Regex
+src/App.jsx:19:27
+-     if (page === 'paper' && /^\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
++     if (page === 'paper' && /^\d+/.test(id ?? '')) return { page: 'paper', id: Number(id) };
+Tests ran:
+    App navigation opens a paper from #/paper/:id and highlights My Library
+    App navigation falls back to Search for #/paper/abc
+    App navigation falls back to Search for #/paper/
+
+
+[Survived] Regex
+src/App.jsx:19:27
+-     if (page === 'paper' && /^\d+$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
++     if (page === 'paper' && /^\d$/.test(id ?? '')) return { page: 'paper', id: Number(id) };
+Tests ran:
+    App navigation opens a paper from #/paper/:id and highlights My Library
+    App navigation falls back to Search for #/paper/abc
+    App navigation falls back to Search for #/paper/
+
+
+[Survived] BooleanLiteral
+src/App.jsx:28:30
+-     const firstRender = useRef(true);
++     const firstRender = useRef(false);
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ArrowFunction
+src/App.jsx:33:12
+-       return () => window.removeEventListener('hashchange', onHashChange);
++       return () => undefined;
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/App.jsx:33:45
+-       return () => window.removeEventListener('hashchange', onHashChange);
++       return () => window.removeEventListener("", onHashChange);
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.jsx:34:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.jsx:40:9
+-       if (firstRender.current) firstRender.current = false;
++       if (false) firstRender.current = false;
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] OptionalChaining
+src/App.jsx:41:10
+-       else document.getElementById('main')?.focus();
++       else document.getElementById('main').focus();
+Tests ran:
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation keeps search results when switching tabs and back
+
+
+[Survived] ConditionalExpression
+src/App.jsx:45:19
+-     const section = route.page === 'paper' ? 'library' : route.page;
++     const section = true ? 'library' : route.page;
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] OptionalChaining
+src/App.jsx:55:11
+-             document.getElementById('main')?.focus();
++             document.getElementById('main').focus();
+Tests ran:
+    App navigation skip link moves focus to the main content without changing the page
+
+
+[Survived] ConditionalExpression
+src/App.jsx:71:43
+-                       className={`nav-link${section === key ? ' active' : ''}`}
++                       className={`nav-link${true ? ' active' : ''}`}
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/App.jsx:71:73
+-                       className={`nav-link${section === key ? ' active' : ''}`}
++                       className={`nav-link${section === key ? ' active' : "Stryker was here!"}`}
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] UnaryOperator
+src/App.jsx:83:55
+-         <main id="main" className="container" tabIndex={-1}>
++         <main id="main" className="container" tabIndex={+1}>
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.jsx:84:10
+-           {route.page === 'search' && <SearchPage search={search} setSearch={setSearch} />}
++           {true && <SearchPage search={search} setSearch={setSearch} />}
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.jsx:85:10
+-           {route.page === 'library' && <LibraryPage />}
++           {true && <LibraryPage />}
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.jsx:86:10
+-           {route.page === 'upload' && <UploadPage />}
++           {true && <UploadPage />}
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.jsx:87:10
+-           {route.page === 'paper' && <PaperPage key={route.id} id={route.id} />}
++           {true && <PaperPage key={route.id} id={route.id} />}
+Tests ran:
+    App navigation starts on Search by default
+    App navigation switches pages from the URL hash and marks the current link
+    App navigation opens a paper from #/paper/:id and highlights My Library
+  and 5 more tests!
+
+
+[Survived] ObjectLiteral
+src/App.jsx:11:11
+-     upload: { label: 'Upload PDF', title: 'Upload PDF' },
++     upload: {},
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.jsx:11:20
+-     upload: { label: 'Upload PDF', title: 'Upload PDF' },
++     upload: { label: "", title: 'Upload PDF' },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.jsx:11:41
+-     upload: { label: 'Upload PDF', title: 'Upload PDF' },
++     upload: { label: 'Upload PDF', title: "" },
+Ran all tests for this mutant.
+
+[Survived] ObjectLiteral
+src/App.jsx:23:23
+-   const initialSearch = { query: '', status: 'idle', submitted: '', total: 0, results: [], error: null };
++   const initialSearch = {};
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.jsx:23:44
+-   const initialSearch = { query: '', status: 'idle', submitted: '', total: 0, results: [], error: null };
++   const initialSearch = { query: '', status: "", submitted: '', total: 0, results: [], error: null };
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/App.jsx:23:63
+-   const initialSearch = { query: '', status: 'idle', submitted: '', total: 0, results: [], error: null };
++   const initialSearch = { query: '', status: 'idle', submitted: "Stryker was here!", total: 0, results: [], error: null };
+Ran all tests for this mutant.
+
+[Survived] ArrayDeclaration
+src/App.jsx:23:86
+-   const initialSearch = { query: '', status: 'idle', submitted: '', total: 0, results: [], error: null };
++   const initialSearch = { query: '', status: 'idle', submitted: '', total: 0, results: ["Stryker was here"], error: null };
+Ran all tests for this mutant.
+
+Ran 5.67 tests per mutant on average.
+------------------|------------------|----------|-----------|------------|----------|----------|
+                  | % Mutation score |          |           |            |          |          |
+File              |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files         |  78.85 |   79.13 |      671 |         0 |        177 |        3 |        0 |
+ components       |  88.57 |   88.57 |       62 |         0 |          8 |        0 |        0 |
+  PaperCard.jsx   |  88.57 |   88.57 |       62 |         0 |          8 |        0 |        0 |
+ pages            |  76.53 |   76.78 |      463 |         0 |        140 |        2 |        0 |
+  LibraryPage.jsx |  77.89 |   77.89 |       74 |         0 |         21 |        0 |        0 |
+  PaperPage.jsx   |  79.08 |   79.08 |      189 |         0 |         50 |        0 |        0 |
+  SearchPage.jsx  |  78.00 |   78.00 |      117 |         0 |         33 |        0 |        0 |
+  UploadPage.jsx  |  68.60 |   69.75 |       83 |         0 |         36 |        2 |        0 |
+ api.js           |  98.39 |   98.39 |       61 |         0 |          1 |        0 |        0 |
+ App.jsx          |  72.64 |   73.33 |       77 |         0 |         28 |        1 |        0 |
+ paperLabels.js   | 100.00 |  100.00 |        8 |         0 |          0 |        0 |        0 |
+------------------|--------|---------|----------|-----------|------------|----------|----------|
+22:16:50 (45218) INFO JsonReporter Your report can be found at: file:///Users/yashtembhurnikar/Files/Purdue/CS%2059300ASE/Homework/research-assistant/client/reports/mutation/mutation.json
+22:16:50 (45218) INFO HtmlReporter Your report can be found at: file:///Users/yashtembhurnikar/Files/Purdue/CS%2059300ASE/Homework/research-assistant/client/reports/mutation/mutation.html
+22:16:50 (45218) INFO MutationTestExecutor Done in 3 minutes 41 seconds.

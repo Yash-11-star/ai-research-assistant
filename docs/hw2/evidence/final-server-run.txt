@@ -1,0 +1,47 @@
+
+ RUN  v3.2.4 /Users/yashtembhurnikar/Files/Purdue/CS 59300ASE/Homework/research-assistant/server
+      Coverage enabled with v8
+
+ ✓ test/service.llm.test.js (21 tests) 20ms
+ ✓ test/service.pdf.test.js (6 tests) 205ms
+ ✓ test/api.search.test.js (19 tests) 164ms
+ ✓ test/api.papers.test.js (42 tests) 362ms
+ ✓ test/service.content.test.js (17 tests) 371ms
+ ✓ test/requirements.test.js (16 tests) 495ms
+   ✓ README: "PDFs are stored ... under randomly generated names (the original filename is never used as a path)" > a path-traversal file name cannot choose where the PDF is written  309ms
+ ✓ test/service.gemini.test.js (22 tests) 59ms
+ ✓ test/unit.context.test.js (11 tests) 22ms
+ ✓ test/api.upload.test.js (19 tests) 599ms
+ ✓ test/api.ai.test.js (13 tests) 112ms
+ ✓ test/api.internal-error.test.js (1 test) 23ms
+ ✓ test/unit.services.test.js (9 tests) 5ms
+ ✓ test/service.metadata.test.js (14 tests) 15ms
+
+ Test Files  13 passed (13)
+      Tests  210 passed (210)
+   Start at  22:07:25
+   Duration  1.51s (transform 216ms, setup 181ms, collect 2.85s, tests 2.45s, environment 2ms, prepare 940ms)
+
+ % Coverage report from v8
+--------------|---------|----------|---------|---------|-------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------|---------|----------|---------|---------|-------------------
+All files     |   99.26 |    95.94 |     100 |   99.26 |                   
+ src          |     100 |    92.85 |     100 |     100 |                   
+  app.js      |     100 |      100 |     100 |     100 |                   
+  db.js       |     100 |    90.47 |     100 |     100 | 9-10              
+ src/routes   |   98.12 |    95.48 |     100 |   98.12 |                   
+  ai.js       |   97.82 |    96.42 |     100 |   97.82 | 50                
+  papers.js   |     100 |    98.43 |     100 |     100 | 124               
+  search.js   |   92.59 |    92.85 |     100 |   92.59 | 30-31             
+  upload.js   |   97.61 |    88.88 |     100 |   97.61 | 93-94             
+ src/services |   99.64 |    96.46 |     100 |   99.64 |                   
+  arxiv.js    |   98.27 |    96.22 |     100 |   98.27 | 113-114           
+  content.js  |     100 |    97.22 |     100 |     100 | 38                
+  context.js  |     100 |    97.14 |     100 |     100 | 38                
+  gemini.js   |     100 |    95.89 |     100 |     100 | 23,30,36          
+  llm.js      |     100 |    96.42 |     100 |     100 | 90                
+  metadata.js |     100 |    97.05 |     100 |     100 | 53                
+  pdf.js      |     100 |    94.73 |     100 |     100 | 40                
+  text.js     |     100 |      100 |     100 |     100 |                   
+--------------|---------|----------|---------|---------|-------------------

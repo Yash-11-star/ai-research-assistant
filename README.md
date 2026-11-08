@@ -29,21 +29,25 @@ research-assistant/
 ├── client/                    React + Vite frontend
 │   ├── index.html
 │   ├── vite.config.js         Dev server; proxies /api to the backend
-│   └── src/
-│       ├── App.jsx            Layout, navigation, hash-based routing
-│       ├── api.js             Backend API client
-│       ├── components/
-│       │   └── PaperCard.jsx  Paper display shared by all pages
-│       └── pages/
-│           ├── SearchPage.jsx
-│           ├── LibraryPage.jsx
-│           ├── UploadPage.jsx
-│           └── PaperPage.jsx  Paper details, AI summary, Q&A
+│   ├── src/
+│   │   ├── App.jsx            Layout, navigation, hash-based routing
+│   │   ├── api.js             Backend API client
+│   │   ├── components/
+│   │   │   └── PaperCard.jsx  Paper display shared by all pages
+│   │   └── pages/
+│   │       ├── SearchPage.jsx
+│   │       ├── LibraryPage.jsx
+│   │       ├── UploadPage.jsx
+│   │       └── PaperPage.jsx  Paper details, AI summary, Q&A
+│   └── test/                  Frontend tests (Vitest + React Testing Library)
+├── docs/hw2/                  Homework 2: bug report, agent prompts, evidence
 └── server/                    Express backend
     ├── .env.example           Configuration template
     ├── data/                  SQLite database and uploaded PDFs (created at runtime, not committed)
+    ├── test/                  Backend tests (Vitest + Supertest)
     └── src/
-        ├── index.js           App setup and error handling
+        ├── app.js             App setup and error handling
+        ├── index.js           Starts the server
         ├── db.js              SQLite schema and queries
         ├── routes/            papers, search, upload, ai (summary + questions)
         └── services/
@@ -166,6 +170,40 @@ Set in `server/.env`. This file holds your API key and is **not committed** (it 
 | POST | `/api/papers/upload` | Upload a PDF (`multipart/form-data`, field `file`) |
 | POST | `/api/papers/:id/summary` | Generate an AI summary |
 | POST | `/api/papers/:id/questions` | Ask a question: `{ "question": "..." }` |
+
+## Testing (Homework 2)
+
+The test suites need **no API key and no network**: arXiv and Gemini are replaced by mocked `fetch` responses, and every server test file uses its own temporary database and data directory (your real library in `server/data/` is never touched). Test PDFs are generated on the fly with `pdf-lib`.
+
+| Suite | Location | Framework | Tests |
+|---|---|---|---|
+| Backend: API routes (via Supertest), services, requirement checks | `server/test/` | Vitest, Supertest | 210 |
+| Frontend: components and pages (rendered in jsdom) | `client/test/` | Vitest, React Testing Library, user-event | 71 |
+
+```bash
+# Install (once)
+cd server && npm install
+cd ../client && npm install
+
+# Run the tests
+cd server && npm test
+cd client && npm test
+
+# Coverage (text summary in the terminal; HTML report in coverage/index.html)
+cd server && npm run coverage
+cd client && npm run coverage
+
+# Mutation testing with Stryker (server: ~3 min; client: ~10 min).
+# HTML report in reports/mutation/mutation.html
+cd server && npm run mutation
+cd client && npm run mutation
+```
+
+**Known bugs.** Tests named `[BUG-n] …` assert the app's *intended* behaviour for five confirmed bugs and are marked as expected failures (`it.fails`), so the suite passes while the bugs exist and those tests fail once a bug is fixed. See [`docs/hw2/BUGS.md`](docs/hw2/BUGS.md).
+
+**Homework 2 materials** are in [`docs/hw2/`](docs/hw2/): the bug report, the prompts given to the coding agent in each round (`AGENT_LOG.md`), and the raw test, coverage and mutation output for every round (`evidence/`). The git history has one commit per round (`HW2 round 0` … `HW2 round 3`).
+
+To support testing, `server/src/index.js` was split into `app.js` (builds the Express app) and `index.js` (starts the server), and the data directory can be overridden with a `DATA_DIR` environment variable. Application behaviour is unchanged.
 
 ## About
 
