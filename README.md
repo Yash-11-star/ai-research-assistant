@@ -207,4 +207,4 @@ To support testing, `server/src/index.js` was split into `app.js` (builds the Ex
 
 ## About
 
-Built by Yash Tembhurnikar for Homework 1 of CS 59300 – Advanced Software Engineering at Purdue University.
+Built by Yash Tembhurnikar.
