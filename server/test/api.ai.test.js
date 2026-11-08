@@ -104,15 +104,30 @@ describe('POST /api/papers/:id/questions', () => {
     expect(res.body.error).toBe(message);
   });
 
-  it('maps a Gemini outage to 503', async () => {
-    vi.useFakeTimers({ toFake: ['setTimeout'] });
-    fetchMock.mockImplementation(async () => new Response('{}', { status: 503 }));
-    const pending = request(app).post(`/api/papers/${withText.id}/questions`).send({ question: 'What?' });
-    const done = pending.then((r) => r);
-    await vi.runAllTimersAsync();
-    const res = await done;
-    vi.useRealTimers();
+  // Round 1 fix: the original version used fake timers around a supertest
+  // request, which hangs (the HTTP socket never resolves). Daily-quota 429s are
+  // not retried, so the 503 mapping can be tested without any delays; the retry
+  // timing itself is tested directly in service.gemini.test.js.
+  it('maps Gemini being out of quota on every model to 503', async () => {
+    fetchMock.mockImplementation(async () =>
+      new Response(JSON.stringify({ error: { message: 'Quota exceeded', details: [{ violations: [{ quotaId: 'RequestsPerDay' }] }] } }), { status: 429 })
+    );
+    const res = await request(app).post(`/api/papers/${withText.id}/questions`).send({ question: 'What?' });
     expect(res.status).toBe(503);
-    expect(res.body.error).toMatch(/AI request failed: Gemini is temporarily unavailable/);
+    expect(res.body.error).toBe('AI request failed: Gemini free-tier daily quota used up for all configured models (Quota exceeded)');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('maps a non-temporary Gemini error on summary to 502', async () => {
+    fetchMock.mockResolvedValue(new Response(JSON.stringify({ error: { message: 'API key not valid' } }), { status: 400 }));
+    const res = await request(app).post(`/api/papers/${withText.id}/summary`);
+    expect(res.status).toBe(502);
+    expect(res.body.error).toBe('AI request failed: Gemini request failed: API key not valid');
+  });
+
+  it('rejects an invalid paper id before calling Gemini', async () => {
+    const res = await request(app).post('/api/papers/abc/questions').send({ question: 'What?' });
+    expect(res.status).toBe(400);
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });

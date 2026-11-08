@@ -1,0 +1,80 @@
+
+ RUN  v3.2.4 /Users/yashtembhurnikar/Files/Purdue/CS 59300ASE/Homework/research-assistant/server
+      Coverage enabled with v8
+
+ ✓ test/service.gemini.test.js (13 tests) 22ms
+ ✓ test/api.internal-error.test.js (1 test) 27ms
+ ✓ test/api.ai.test.js (14 tests) 97ms
+ ✓ test/api.search.test.js (16 tests) 110ms
+ ✓ test/unit.services.test.js (10 tests) 13ms
+ ✓ test/api.papers.test.js (40 tests) 429ms
+ ✓ test/service.metadata.test.js (10 tests) 10ms
+ ✓ test/service.content.test.js (17 tests) 341ms
+ ❯ test/api.upload.test.js (15 tests | 1 failed) 434ms
+   ✓ POST /api/papers/upload > stores an uploaded PDF with verified metadata and full text 176ms
+   ✓ POST /api/papers/upload > discards hallucinated metadata that is not in the PDF 26ms
+   ✓ POST /api/papers/upload > rejects requests without a file 12ms
+   ✓ POST /api/papers/upload > rejects non-PDF files with 415 6ms
+   ✓ POST /api/papers/upload > rejects a file named .pdf whose bytes are not a PDF 4ms
+   ✓ POST /api/papers/upload > rejects files over 20 MB with 413 123ms
+   ✓ POST /api/papers/upload > rejects a file sent in the wrong form field 7ms
+   ✓ POST /api/papers/upload > rejects more than one file 8ms
+   ✓ POST /api/papers/upload > rejects extra form fields 8ms
+   × POST /api/papers/upload > rejects a malformed multipart body 12ms
+     → expected 500 to be 400 // Object.is equality
+   ✓ POST /api/papers/upload > rejects a corrupted PDF with 422 5ms
+   ✓ POST /api/papers/upload > rejects a PDF with no text layer (e.g. a scan) with 422 7ms
+   ✓ POST /api/papers/upload > accepts a PDF declared by MIME type even without a .pdf extension 12ms
+   ✓ POST /api/papers/upload > stores the full text of every page for later Q&A 14ms
+   ✓ POST /api/papers/upload > reports a Gemini failure and does not leave a file behind 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/api.upload.test.js > POST /api/papers/upload > rejects a malformed multipart body
+AssertionError: expected 500 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 500
+
+ ❯ test/api.upload.test.js:107:24
+    105|       .set('Content-Type', 'multipart/form-data; boundary=XYZ')
+    106|       .send('--XYZ\r\nContent-Disposition: form-data; name="file"; fil…
+    107|     expect(res.status).toBe(400);
+       |                        ^
+    108|     expect(res.body.error).toBe('Malformed multipart/form-data request…
+    109|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 8 passed (9)
+      Tests  1 failed | 135 passed (136)
+   Start at  21:52:30
+   Duration  1.15s (transform 198ms, setup 154ms, collect 2.17s, tests 1.48s, environment 1ms, prepare 743ms)
+
+ % Coverage report from v8
+--------------|---------|----------|---------|---------|-----------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+--------------|---------|----------|---------|---------|-----------------------
+All files     |   99.16 |     92.5 |     100 |   99.16 |                       
+ src          |     100 |    92.85 |     100 |     100 |                       
+  app.js      |     100 |      100 |     100 |     100 |                       
+  db.js       |     100 |    90.47 |     100 |     100 | 9-10                  
+ src/routes   |   98.12 |    93.84 |     100 |   98.12 |                       
+  ai.js       |   97.82 |    96.42 |     100 |   97.82 | 50                    
+  papers.js   |     100 |    98.38 |     100 |     100 | 124                   
+  search.js   |   92.59 |     92.3 |     100 |   92.59 | 30-31                 
+  upload.js   |   97.61 |    81.48 |     100 |   97.61 | 93-94                 
+ src/services |   99.46 |    91.82 |     100 |   99.46 |                       
+  arxiv.js    |   98.27 |    88.23 |     100 |   98.27 | 113-114               
+  content.js  |     100 |    97.14 |     100 |     100 | 38                    
+  context.js  |     100 |    96.66 |     100 |     100 | 38                    
+  gemini.js   |     100 |    88.57 |     100 |     100 | 23-24,30,35-36,99,101 
+  llm.js      |     100 |     93.1 |     100 |     100 | 90-94                 
+  metadata.js |     100 |    97.05 |     100 |     100 | 53                    
+  pdf.js      |    97.5 |       80 |     100 |    97.5 | 39                    
+  text.js     |     100 |      100 |     100 |     100 |                       
+--------------|---------|----------|---------|---------|-----------------------

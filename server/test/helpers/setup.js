@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { afterAll, vi } from 'vitest';
+import { afterAll, beforeEach, vi } from 'vitest';
 
 // Runs before every test file, before any app module is imported: point the
 // app at a throwaway data directory and database so tests never touch the
@@ -13,10 +13,13 @@ process.env.GEMINI_API_KEY = 'test-key';
 process.env.GEMINI_MODEL = 'model-a';
 process.env.GEMINI_FALLBACK_MODEL = 'model-b';
 
-// Keep test output readable; the app logs every handled error.
-vi.spyOn(console, 'error').mockImplementation(() => {});
-vi.spyOn(console, 'warn').mockImplementation(() => {});
-vi.spyOn(console, 'log').mockImplementation(() => {});
+// Keep test output readable; the app logs every handled error. Re-applied
+// before each test because `restoreMocks` undoes spies between tests.
+beforeEach(() => {
+  vi.spyOn(console, 'error').mockImplementation(() => {});
+  vi.spyOn(console, 'warn').mockImplementation(() => {});
+  vi.spyOn(console, 'log').mockImplementation(() => {});
+});
 
 afterAll(() => {
   fs.rmSync(dir, { recursive: true, force: true });
