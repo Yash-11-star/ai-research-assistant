@@ -1,0 +1,92 @@
+
+ RUN  v3.2.4 /Users/yashtembhurnikar/Files/Purdue/CS 59300ASE/Homework/research-assistant/server
+      Coverage enabled with v8
+
+ ✓ test/unit.services.test.js (10 tests) 14ms
+ ✓ test/api.papers.test.js (20 tests) 81ms
+stderr | test/api.search.test.js > GET /api/search > maps an arXiv 429 to a 503 with a user-facing message
+Search failed for "graphs": arXiv is temporarily rate-limiting requests. Please wait a few minutes and try again.
+
+stderr | test/api.ai.test.js > POST /api/papers/:id/questions > answers with evidence quotes that are verified against the paper
+Q&A paper #1: dropped 1 evidence quote(s) not found in the paper
+
+stderr | test/api.search.test.js > GET /api/search > maps a network failure to 502
+Search failed for "graphs": Could not reach arXiv
+
+stderr | test/api.ai.test.js > POST /api/papers/:id/questions > warns when no evidence quote can be verified
+Q&A paper #1: dropped 1 evidence quote(s) not found in the paper
+
+stderr | test/api.ai.test.js > POST /api/papers/:id/questions > maps a Gemini outage to 503
+Gemini model-a HTTP 503; retrying
+
+ ✓ test/api.search.test.js (7 tests) 39ms
+stderr | test/api.upload.test.js > POST /api/papers/upload > stores an uploaded PDF with verified metadata and full text
+Upload #1: Abstract could not be determined from the PDF
+
+stderr | test/api.upload.test.js > POST /api/papers/upload > discards hallucinated metadata that is not in the PDF
+Upload #2: Discarded title not found in PDF text: "A Completely Different Title"; Discarded author not found in PDF text: "Geoffrey Hinton"; Title could not be determined from the PDF; Authors could not be determined from the PDF; Abstract could not be determined from the PDF; Using the file name "my-paper" as a placeholder title
+
+stderr | test/api.upload.test.js > POST /api/papers/upload > reports a Gemini failure and does not leave a file behind
+Upload of "paper.pdf" failed: Gemini request failed: bad key
+
+ ✓ test/api.upload.test.js (6 tests) 137ms
+ ❯ test/api.ai.test.js (12 tests | 1 failed) 5064ms
+   ✓ POST /api/papers/:id/summary > returns a structured summary generated from stored text 18ms
+   ✓ POST /api/papers/:id/summary > fills missing summary fields with "Not stated in the paper." 3ms
+   ✓ POST /api/papers/:id/summary > returns 404 for an unknown paper 2ms
+   ✓ POST /api/papers/:id/summary > returns 422 for a paper with no text and no PDF link 2ms
+   ✓ POST /api/papers/:id/questions > answers with evidence quotes that are verified against the paper 7ms
+   ✓ POST /api/papers/:id/questions > prefixes the not-enough-information sentence when the answer is not in the paper 3ms
+   ✓ POST /api/papers/:id/questions > warns when no evidence quote can be verified 2ms
+   ✓ POST /api/papers/:id/questions > rejects {} with 400 2ms
+   ✓ POST /api/papers/:id/questions > rejects {"question":42} with 400 2ms
+   ✓ POST /api/papers/:id/questions > rejects {"question":"   "} with 400 2ms
+   ✓ POST /api/papers/:id/questions > rejects {"question":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} with 400 1ms
+   × POST /api/papers/:id/questions > maps a Gemini outage to 503 5016ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/api.ai.test.js > POST /api/papers/:id/questions > maps a Gemini outage to 503
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ test/api.ai.test.js:107:5
+    105|   });
+    106| 
+    107|   it('maps a Gemini outage to 503', async () => {
+       |     ^
+    108|     vi.useFakeTimers({ toFake: ['setTimeout'] });
+    109|     fetchMock.mockImplementation(async () => new Response('{}', { stat…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 54 passed (55)
+   Start at  21:47:47
+   Duration  5.68s (transform 107ms, setup 55ms, collect 1.10s, tests 5.34s, environment 1ms, prepare 369ms)
+
+ % Coverage report from v8
+--------------|---------|----------|---------|---------|------------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s      
+--------------|---------|----------|---------|---------|------------------------
+All files     |   85.65 |    79.42 |   91.11 |   85.65 |                        
+ src          |   94.48 |     87.5 |    87.5 |   94.48 |                        
+  app.js      |   84.37 |       75 |     100 |   84.37 | 32-36                  
+  db.js       |   97.89 |       90 |    87.5 |   97.89 | 104-105                
+ src/routes   |   87.96 |    86.53 |     100 |   87.96 |                        
+  ai.js       |   86.95 |    94.44 |     100 |   86.95 | 45-50                  
+  papers.js   |   90.82 |    89.09 |     100 |   90.82 | 53-54,121-127,135      
+  search.js   |   92.59 |    84.61 |     100 |   92.59 | 30-31                  
+  upload.js   |   83.33 |    72.22 |     100 |   83.33 | 27-38,93-94            
+ src/services |   82.56 |    74.31 |   90.62 |   82.56 |                        
+  arxiv.js    |   91.37 |     61.9 |     100 |   91.37 | ...123,125-126,131-132 
+  content.js  |   35.52 |     87.5 |   66.66 |   35.52 | 19-62,79-85            
+  context.js  |     100 |    96.66 |     100 |     100 | 38                     
+  gemini.js   |   81.55 |     62.5 |   85.71 |   81.55 | ...-94,101-103,113-114 
+  llm.js      |     100 |    85.71 |     100 |     100 | 13-14,90-94            
+  metadata.js |   85.91 |    70.83 |     100 |   85.91 | 63-65,71-77            
+  pdf.js      |      75 |       50 |   66.66 |      75 | 6-8,25-27,34-35,38-39  
+  text.js     |     100 |      100 |     100 |     100 |                        
+--------------|---------|----------|---------|---------|------------------------

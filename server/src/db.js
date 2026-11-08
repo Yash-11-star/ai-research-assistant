@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 // Resolve relative to this file so the DB location doesn't depend on the cwd.
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-export const DATA_DIR = path.resolve(__dirname, '../data');
+// DATA_DIR can be overridden (tests point it at a temporary directory).
+export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.resolve(__dirname, '../data'));
 const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'papers.db');
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });

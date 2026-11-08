@@ -16,3 +16,8 @@ dist/
 # Logs / OS
 *.log
 .DS_Store
+
+# Test output
+coverage/
+reports/
+.stryker-tmp/
