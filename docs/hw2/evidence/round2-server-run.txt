@@ -1,0 +1,43 @@
+
+ RUN  v3.2.4 /Users/yashtembhurnikar/Files/Purdue/CS 59300ASE/Homework/research-assistant/server
+      Coverage enabled with v8
+
+ ✓ test/api.internal-error.test.js (1 test) 22ms
+ ✓ test/api.ai.test.js (14 tests) 97ms
+ ✓ test/api.search.test.js (16 tests) 107ms
+ ✓ test/service.content.test.js (17 tests) 249ms
+ ✓ test/service.gemini.test.js (13 tests) 21ms
+ ✓ test/api.papers.test.js (40 tests) 431ms
+ ✓ test/unit.services.test.js (10 tests) 19ms
+ ✓ test/requirements.test.js (17 tests) 438ms
+ ✓ test/service.metadata.test.js (10 tests) 9ms
+ ✓ test/api.upload.test.js (16 tests) 542ms
+
+ Test Files  10 passed (10)
+      Tests  154 passed (154)
+   Start at  22:01:33
+   Duration  1.23s (transform 201ms, setup 115ms, collect 2.39s, tests 1.94s, environment 1ms, prepare 737ms)
+
+ % Coverage report from v8
+--------------|---------|----------|---------|---------|-----------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+--------------|---------|----------|---------|---------|-----------------------
+All files     |   99.16 |     92.8 |     100 |   99.16 |                       
+ src          |     100 |    92.85 |     100 |     100 |                       
+  app.js      |     100 |      100 |     100 |     100 |                       
+  db.js       |     100 |    90.47 |     100 |     100 | 9-10                  
+ src/routes   |   98.12 |    94.65 |     100 |   98.12 |                       
+  ai.js       |   97.82 |    96.42 |     100 |   97.82 | 50                    
+  papers.js   |     100 |    98.41 |     100 |     100 | 124                   
+  search.js   |   92.59 |     92.3 |     100 |   92.59 | 30-31                 
+  upload.js   |   97.61 |    85.18 |     100 |   97.61 | 93-94                 
+ src/services |   99.46 |    91.91 |     100 |   99.46 |                       
+  arxiv.js    |   98.27 |    88.23 |     100 |   98.27 | 113-114               
+  content.js  |     100 |    97.22 |     100 |     100 | 38                    
+  context.js  |     100 |    96.87 |     100 |     100 | 38                    
+  gemini.js   |     100 |    88.57 |     100 |     100 | 23-24,30,35-36,99,101 
+  llm.js      |     100 |     93.1 |     100 |     100 | 90-94                 
+  metadata.js |     100 |    97.05 |     100 |     100 | 53                    
+  pdf.js      |    97.5 |       80 |     100 |    97.5 | 39                    
+  text.js     |     100 |      100 |     100 |     100 |                       
+--------------|---------|----------|---------|---------|-----------------------

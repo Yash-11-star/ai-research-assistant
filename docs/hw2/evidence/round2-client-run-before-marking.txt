@@ -1,0 +1,43 @@
+
+ RUN  v3.2.4 /Users/yashtembhurnikar/Files/Purdue/CS 59300ASE/Homework/research-assistant/client
+
+ ✓ test/api.test.js (11 tests) 17ms
+ ❯ test/PaperCard.test.jsx (11 tests | 1 failed) 165ms
+   ✓ PaperCard > shows title, authors, year, source badge and external links 79ms
+   ✓ PaperCard > labels search results and uploads by source 6ms
+   ✓ PaperCard > shows placeholders for missing metadata and omits the footer when there is nothing to show 2ms
+   ✓ PaperCard > collapses long author lists and expands them on request 26ms
+   ✓ PaperCard > shows exactly six authors without a "more" button 2ms
+   ✓ PaperCard > previews a long abstract at a word boundary and toggles it 17ms
+   ✓ PaperCard > shows short abstracts in full without a toggle, and can start expanded 8ms
+   × PaperCard > shortens a long abstract that has no spaces near the start 24ms
+     → expected 525 to be less than or equal to 361
+   ✓ contentLabel > {"has_full_text":true,"pdf_url":"x"} -> Full text available 0ms
+   ✓ contentLabel > {"has_full_text":false,"pdf_url":"https://arxiv.org/pdf/1"} -> Full text fetched on first use 0ms
+   ✓ contentLabel > {"has_full_text":false,"pdf_url":null} -> Metadata only 0ms
+ ✓ test/LibraryPage.test.jsx (8 tests) 263ms
+ ✓ test/App.test.jsx (8 tests) 296ms
+ ✓ test/UploadPage.test.jsx (7 tests) 353ms
+ ✓ test/SearchPage.test.jsx (10 tests) 610ms
+ ✓ test/PaperPage.test.jsx (16 tests) 658ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/PaperCard.test.jsx > PaperCard > shortens a long abstract that has no spaces near the start
+AssertionError: expected 525 to be less than or equal to 361
+ ❯ test/PaperCard.test.jsx:89:28
+     87|     render(<PaperCard paper={makePaper({ abstract })} />);
+     88|     const preview = screen.getByText(/…$/).textContent;
+     89|     expect(preview.length).toBeLessThanOrEqual(361);
+       |                            ^
+     90|   });
+     91| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 6 passed (7)
+      Tests  1 failed | 70 passed (71)
+   Start at  22:01:02
+   Duration  1.59s (transform 298ms, setup 937ms, collect 1.01s, tests 2.36s, environment 2.83s, prepare 474ms)
+

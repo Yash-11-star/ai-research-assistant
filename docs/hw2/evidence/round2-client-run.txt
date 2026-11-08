@@ -1,0 +1,34 @@
+
+ RUN  v3.2.4 /Users/yashtembhurnikar/Files/Purdue/CS 59300ASE/Homework/research-assistant/client
+      Coverage enabled with v8
+
+ ✓ test/api.test.js (11 tests) 20ms
+ ✓ test/PaperCard.test.jsx (11 tests) 215ms
+ ✓ test/LibraryPage.test.jsx (8 tests) 359ms
+ ✓ test/App.test.jsx (8 tests) 345ms
+ ✓ test/UploadPage.test.jsx (7 tests) 405ms
+ ✓ test/SearchPage.test.jsx (10 tests) 710ms
+ ✓ test/PaperPage.test.jsx (16 tests) 826ms
+
+ Test Files  7 passed (7)
+      Tests  71 passed (71)
+   Start at  22:01:35
+   Duration  1.91s (transform 307ms, setup 1.17s, collect 879ms, tests 2.88s, environment 2.94s, prepare 545ms)
+
+ % Coverage report from v8
+------------------|---------|----------|---------|---------|-------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------|---------|----------|---------|---------|-------------------
+All files         |     100 |    95.84 |     100 |     100 |                   
+ src              |     100 |    98.38 |     100 |     100 |                   
+  App.jsx         |     100 |    96.66 |     100 |     100 | 19                
+  api.js          |     100 |      100 |     100 |     100 |                   
+  paperLabels.js  |     100 |      100 |     100 |     100 |                   
+ src/components   |     100 |      100 |     100 |     100 |                   
+  PaperCard.jsx   |     100 |      100 |     100 |     100 |                   
+ src/pages        |     100 |    94.44 |     100 |     100 |                   
+  LibraryPage.jsx |     100 |    93.33 |     100 |     100 | 20,25             
+  PaperPage.jsx   |     100 |    94.59 |     100 |     100 | 104,117,242,247   
+  SearchPage.jsx  |     100 |    98.27 |     100 |     100 | 49                
+  UploadPage.jsx  |     100 |    88.88 |     100 |     100 | 13,28-30,36       
+------------------|---------|----------|---------|---------|-------------------
