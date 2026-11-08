@@ -138,6 +138,28 @@ describe('POST /api/papers/upload', () => {
     expect(res.status).toBe(201);
   });
 
+  // Round 3 (mutation feedback): either a PDF name or a PDF MIME type is enough,
+  // but the bytes must always be a PDF.
+  it('accepts a .pdf name even when the browser sends a generic MIME type', async () => {
+    fetchMock.mockResolvedValue(geminiResponse(goodMetadata));
+    const res = await request(app).post('/api/papers/upload').attach('file', await samplePdf(), { filename: 'p.pdf', contentType: 'application/octet-stream' });
+    expect(res.status).toBe(201);
+  });
+
+  it('rejects real PDF bytes that are declared as neither PDF name nor PDF type', async () => {
+    const res = await request(app).post('/api/papers/upload').attach('file', await samplePdf(), { filename: 'p.bin', contentType: 'application/octet-stream' });
+    expect(res.status).toBe(415);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('falls back to "Untitled PDF" when the file name is blank', async () => {
+    fetchMock.mockResolvedValue(geminiResponse({ ...goodMetadata, title: null }));
+    const res = await request(app).post('/api/papers/upload').attach('file', await samplePdf(), '   .pdf');
+    expect(res.status).toBe(201);
+    expect(res.body.title).toBe('Untitled PDF');
+    expect(res.body.warnings).toContain('Using the file name "Untitled PDF" as a placeholder title');
+  });
+
   it('stores the full text of every page for later Q&A', async () => {
     fetchMock.mockResolvedValue(geminiResponse(goodMetadata));
     const res = await request(app).post('/api/papers/upload').attach('file', await samplePdf(), 'paper.pdf');

@@ -59,7 +59,37 @@ describe('GET /api/search', () => {
     fetchMock.mockResolvedValue(new Response('slow down', { status: 429 }));
     const res = await request(app).get('/api/search').query({ q: 'graphs' });
     expect(res.status).toBe(503);
-    expect(res.body.error).toMatch(/rate-limiting/);
+    // Round 3: exact message, so the "Paper search failed:" prefix must be absent.
+    expect(res.body.error).toBe('arXiv is temporarily rate-limiting requests. Please wait a few minutes and try again.');
+  });
+
+  it('passes a timeout signal to fetch', async () => {
+    fetchMock.mockResolvedValue(new Response(arxivFeed([])));
+    await request(app).get('/api/search').query({ q: 'x' });
+    expect(fetchMock.mock.calls[0][1].signal).toBeInstanceOf(AbortSignal);
+  });
+
+  it('detects the PDF link by title or by type, keeps numeric titles as text and strips multi-digit versions', async () => {
+    const feed = `<feed xmlns="http://www.w3.org/2005/Atom">
+      <entry><id>http://arxiv.org/abs/1111.11111v12</id><title>1984</title><published>2011-11-01T00:00:00Z</published>
+        <author><name>  Ada
+          Lovelace </name></author><author><name> </name></author><author></author>
+        <link href="x" type="application/pdf"/></entry>
+      <entry><id>http://arxiv.org/abs/2222.22222</id><title>By title</title><link href="y" title="pdf"/></entry>
+      <entry><id>http://arxiv.org/abs/3333.33333</id><title>No pdf</title><link href="z" type="text/html"/></entry>
+    </feed>`;
+    fetchMock.mockResolvedValue(new Response(feed));
+    const { results, total } = (await request(app).get('/api/search').query({ q: 'x' })).body;
+    expect(total).toBe(3); // no totalResults element: falls back to the number of results
+    expect(results[0]).toMatchObject({ external_id: 'arxiv:1111.11111', title: '1984', authors: ['Ada Lovelace'], pdf_url: 'https://arxiv.org/pdf/1111.11111' });
+    expect(results[1].pdf_url).toBe('https://arxiv.org/pdf/2222.22222');
+    expect(results[2].pdf_url).toBeNull();
+  });
+
+  it('says "unknown error" when arXiv rejects a query without explaining', async () => {
+    fetchMock.mockResolvedValue(new Response('<feed><entry><id>http://arxiv.org/api/errors#x</id></entry></feed>', { status: 400 }));
+    const res = await request(app).get('/api/search').query({ q: 'x' });
+    expect(res.body.error).toBe('Paper search failed: arXiv rejected the query: unknown error');
   });
 
   it('reports the total number of matches, not just the page size', async () => {

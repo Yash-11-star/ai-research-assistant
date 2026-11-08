@@ -42,11 +42,8 @@ describe('README: "Evidence verification. Quotes that cannot be found are remove
     expect(res.body.warning).toBeUndefined();
   });
 
-  it('removes quotes that are not in the paper', async () => {
-    fetchMock.mockResolvedValue(geminiResponse({ found_in_paper: true, answer: 'x', evidence: ['We evaluate on ImageNet.', 'Our model reaches 28.4 BLEU'] }));
-    const res = await ask(paperWithText().id);
-    expect(res.body.evidence).toEqual(['Our model reaches 28.4 BLEU']);
-  });
+  // (Round 3: "removes quotes that are not in the paper" was removed here as a
+  // duplicate of api.ai.test.js "answers with evidence quotes that are verified".)
 
   // A "quote" made only of punctuation contains no text from the paper, so it
   // cannot have been verified; the answer must carry the warning.

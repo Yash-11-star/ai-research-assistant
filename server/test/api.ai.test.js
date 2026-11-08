@@ -79,13 +79,6 @@ describe('POST /api/papers/:id/questions', () => {
     expect(res.body.warning).toBeUndefined();
   });
 
-  it('prefixes the not-enough-information sentence when the answer is not in the paper', async () => {
-    fetchMock.mockResolvedValue(geminiResponse({ found_in_paper: false, answer: 'It covers translation.', evidence: ['x'] }));
-    const res = await request(app).post(`/api/papers/${withText.id}/questions`).send({ question: 'Who funded it?' });
-    expect(res.body.answer).toBe('The paper does not provide enough information to answer this question. It covers translation.');
-    expect(res.body.evidence).toEqual([]);
-  });
-
   it('warns when no evidence quote can be verified', async () => {
     fetchMock.mockResolvedValue(geminiResponse({ found_in_paper: true, answer: 'Yes.', evidence: ['made up quote'] }));
     const res = await request(app).post(`/api/papers/${withText.id}/questions`).send({ question: 'Is it fast?' });

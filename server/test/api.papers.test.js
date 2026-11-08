@@ -159,6 +159,26 @@ describe('paper validation', () => {
     expect(res.body.error).toContain(message);
   });
 
+  // Round 3 (mutation feedback): the limits are inclusive.
+  it('accepts values exactly at the limits', async () => {
+    const res = await save({
+      title: 't'.repeat(1000),
+      authors: Array(500).fill('A'),
+      abstract: 'a'.repeat(20000),
+      external_id: `x${'e'.repeat(199)}`,
+      url: 'http://example.com/plain-http-is-allowed',
+    });
+    expect(res.status).toBe(201);
+    expect(res.body.authors).toHaveLength(500);
+    expect(res.body.url).toBe('http://example.com/plain-http-is-allowed');
+  });
+
+  it('treats null authors and year as empty', async () => {
+    const res = await save({ title: 'Nulls', authors: null, year: null });
+    expect(res.status).toBe(201);
+    expect(res.body).toMatchObject({ authors: [], year: null });
+  });
+
   it.each([1000, new Date().getFullYear() + 1, '2017'])('accepts year %j', async (year) => {
     const res = await save({ title: 'Year ok', year });
     expect(res.status).toBe(201);
