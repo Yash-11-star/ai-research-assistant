@@ -181,25 +181,28 @@ The test suites need **no API key and no network**: arXiv and Gemini are replace
 | Frontend: components and pages (rendered in jsdom) | `client/test/` | Vitest, React Testing Library, user-event | 71 |
 
 ```bash
+# Each command runs from the repository root.
+
 # Install (once)
-cd server && npm install
-cd ../client && npm install
+(cd server && npm ci)
+(cd client && npm ci)
 
 # Run the tests
-cd server && npm test
-cd client && npm test
+(cd server && npm test)
+(cd client && npm test)
 
-# Coverage (text summary in the terminal; HTML report in coverage/index.html)
-cd server && npm run coverage
-cd client && npm run coverage
+# Coverage (text summary in the terminal; HTML report in coverage/index.html).
+# Scope: all of src/ except the start-up files server/src/index.js and client/src/main.jsx.
+(cd server && npm run coverage)
+(cd client && npm run coverage)
 
 # Mutation testing with Stryker (server: ~3 min; client: ~10 min).
 # HTML report in reports/mutation/mutation.html
-cd server && npm run mutation
-cd client && npm run mutation
+(cd server && npm run mutation)
+(cd client && npm run mutation)
 ```
 
-**Known bugs.** Tests named `[BUG-n] …` assert the app's *intended* behaviour for five confirmed bugs and are marked as expected failures (`it.fails`), so the suite passes while the bugs exist and those tests fail once a bug is fixed. See [`docs/hw2/BUGS.md`](docs/hw2/BUGS.md).
+**Known bugs.** Tests named `[BUG-n] …` assert the app's *intended* behaviour for five confirmed bugs and are marked as expected failures (`it.fails`). The runner reports them as passing while the bugs exist (273 ordinary passes + 8 expected failures), and they start failing once a bug is fixed. See [`docs/hw2/BUGS.md`](docs/hw2/BUGS.md).
 
 **Homework 2 materials** are in [`docs/hw2/`](docs/hw2/): the bug report, the prompts given to the coding agent in each round (`AGENT_LOG.md`), and the raw test, coverage and mutation output for every round (`evidence/`). The git history has one commit per round (`HW2 round 0` … `HW2 round 3`).
 

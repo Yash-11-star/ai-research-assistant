@@ -2,7 +2,7 @@
 
 Five application bugs were confirmed. None was detected by the initial (round 0) suite. Each one is pinned by a test wrapped in `knownBug()` (Vitest `it.fails`): the test states the **intended** behaviour, so the suite stays green while the bug exists, and the test turns red as soon as the bug is fixed. When that happens, the `knownBug` wrapper should be replaced with a plain `it`.
 
-The application code was **not** changed to make tests pass.
+Apart from the initial testability refactor (`app.js`/`index.js` split and the `DATA_DIR` override), no application behaviour was changed, and none of these bugs was fixed.
 
 | ID | Severity | Area | Found in | Detecting test |
 |---|---|---|---|---|
